@@ -1,5 +1,5 @@
 import { TemplateResult } from 'lit-html';
-import { get } from 'lit-translate';
+import { get } from '../translation.js';
 import { WizardPage } from '@openscd/open-scd/src/foundation.js';
 
 import {

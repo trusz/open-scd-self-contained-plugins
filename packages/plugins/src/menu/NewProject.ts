@@ -1,5 +1,5 @@
 import { html, LitElement } from 'lit-element';
-import { get } from 'lit-translate';
+import { get } from '../translation.js';
 
 import '@material/mwc-list';
 import '@material/mwc-list/mwc-radio-list-item';

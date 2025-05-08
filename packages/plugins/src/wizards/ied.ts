@@ -1,5 +1,5 @@
 import { html, TemplateResult } from 'lit-element';
-import { get } from 'lit-translate';
+import { get } from '../translation.js';
 
 import '@material/mwc-list';
 import '@material/mwc-list/mwc-list-item';
@@ -15,7 +15,7 @@ import {
   WizardInputElement,
   WizardMenuActor,
 } from '@openscd/open-scd/src/foundation.js';
-import { 
+import {
   ComplexAction,
   Delete,
   EditorAction,

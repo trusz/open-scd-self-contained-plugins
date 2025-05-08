@@ -1,5 +1,5 @@
 import { LitElement, html, TemplateResult, property, css } from 'lit-element';
-import { get } from 'lit-translate';
+import { get } from '../translation.js';
 
 import '@material/mwc-fab';
 

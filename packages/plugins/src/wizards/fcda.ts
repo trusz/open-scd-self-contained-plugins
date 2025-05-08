@@ -1,5 +1,5 @@
 import { html } from 'lit-element';
-import { get } from 'lit-translate';
+import { get } from '../translation.js';
 
 import {
   find,

@@ -13,7 +13,7 @@ import {
   EditorAction,
   createUpdateAction
 } from '@openscd/core/foundation/deprecated/editor';
-import { get } from 'lit-translate';
+import { get } from '../../translation.js';
 import { updateReferences } from './references.js';
 
 export function replaceNamingAction(element: Element): WizardActor {

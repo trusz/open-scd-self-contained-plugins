@@ -23,7 +23,7 @@ import {
   determineUninitializedStructure,
   initializeElements,
 } from '@openscd/open-scd/src/foundation/dai.js';
-import { get } from 'lit-translate';
+import { get } from '../../translation.js';
 
 /**
  * List of supported Common Data Classes in the 104 protocol.

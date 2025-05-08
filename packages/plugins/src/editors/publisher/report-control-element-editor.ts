@@ -6,7 +6,7 @@ import {
   property,
   TemplateResult,
 } from 'lit-element';
-import { get } from 'lit-translate';
+import { get } from '../../translation.js';
 
 import '@openscd/open-scd/src/wizard-textfield.js';
 import '@openscd/open-scd/src/wizard-checkbox.js';

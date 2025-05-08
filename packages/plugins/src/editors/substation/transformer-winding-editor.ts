@@ -8,7 +8,7 @@ import {
   query,
 } from 'lit-element';
 
-import { get } from 'lit-translate';
+import { get } from '../../translation.js';
 
 import '@material/mwc-fab';
 import '@material/mwc-icon';

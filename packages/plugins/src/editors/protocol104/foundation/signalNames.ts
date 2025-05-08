@@ -1,4 +1,4 @@
-import { get } from 'lit-translate';
+import { get } from '../../../translation.js';
 
 export function getSignalName(tiNumber: string): string {
   switch (tiNumber) {

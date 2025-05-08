@@ -7,7 +7,7 @@ import {
   state,
   TemplateResult,
 } from 'lit-element';
-import { get } from 'lit-translate';
+import { get } from '../translation.js';
 import { nothing } from 'lit-html';
 
 import '@material/mwc-list/mwc-check-list-item';

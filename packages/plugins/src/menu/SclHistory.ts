@@ -6,7 +6,7 @@ import {
   TemplateResult,
   LitElement,
 } from 'lit-element';
-import { get } from 'lit-translate';
+import { get } from '../translation.js';
 
 import '@material/mwc-button';
 import '@material/mwc-dialog';

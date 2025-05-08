@@ -6,7 +6,7 @@ import {
   query,
   TemplateResult,
 } from 'lit-element';
-import { get } from 'lit-translate';
+import { get } from '../translation.js';
 
 import { RadioListItem } from '@material/mwc-list/mwc-radio-list-item.js';
 

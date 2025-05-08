@@ -6,7 +6,7 @@ import {
   property,
   TemplateResult,
 } from 'lit-element';
-import { get } from 'lit-translate';
+import { get } from '../../../translation.js';
 import { classMap } from 'lit-html/directives/class-map';
 
 import '@material/mwc-icon';

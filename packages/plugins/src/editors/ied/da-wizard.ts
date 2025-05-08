@@ -1,6 +1,6 @@
 import { html } from 'lit-element';
 import { TemplateResult } from 'lit-html';
-import { get } from 'lit-translate';
+import { get } from '../../translation.js';
 
 import '@material/mwc-textarea';
 import '@material/mwc-textfield';

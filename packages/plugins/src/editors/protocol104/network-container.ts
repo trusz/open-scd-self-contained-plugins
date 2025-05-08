@@ -1,4 +1,4 @@
-import { get } from 'lit-translate';
+import { get } from '../../translation.js';
 import { css, customElement, html, TemplateResult } from 'lit-element';
 
 import './subnetwork-container.js';

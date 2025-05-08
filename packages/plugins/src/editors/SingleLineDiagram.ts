@@ -47,7 +47,7 @@ import {
 import { isSCLNamespace } from '@openscd/open-scd/src/schemas.js';
 import { wizards } from './singlelinediagram/wizards/wizard-library.js';
 import { SingleSelectedEvent } from '@material/mwc-list/mwc-list-foundation';
-import { get } from 'lit-translate';
+import { get } from '../translation.js';
 
 import '@material/mwc-list/mwc-list-item';
 import '@material/mwc-select';

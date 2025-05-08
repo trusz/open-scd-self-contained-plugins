@@ -1,5 +1,5 @@
 import { css, html, LitElement, query, TemplateResult } from 'lit-element';
-import { get } from 'lit-translate';
+import { get } from '../translation.js';
 
 import {
   crossProduct,
