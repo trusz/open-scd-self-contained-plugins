@@ -2,9 +2,10 @@ import { css, html, LitElement, property, TemplateResult } from 'lit-element';
 
 import './subscription/fcda-binding-list.js';
 import './subscription/later-binding/ext-ref-later-binding-list.js';
+import { DirectDialogMixin } from '../directDialogMixin.js';
 
 /** An editor [[`plugin`]] for Subscribe Later Binding (GOOSE). */
-export default class GooseSubscribeLaterBindingPlugin extends LitElement {
+export default class GooseSubscribeLaterBindingPlugin extends DirectDialogMixin {
   @property({ attribute: false })
   doc!: XMLDocument;
   @property({ type: Number })
@@ -27,6 +28,7 @@ export default class GooseSubscribeLaterBindingPlugin extends LitElement {
         >
         </extref-later-binding-list>
       </div>
+      ${this.renderWizardDialog()}
     </div>`;
   }
 

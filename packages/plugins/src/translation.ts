@@ -21,7 +21,6 @@ export function get(key: string, params?: Record<string, string>): string {
 
   const language = navigator.language.split('-')[0] || 'en';
   const translations = languages[language] || languages['en'];
-  console.debug("== Translation ==", {key, languages, language, params, translations})
 
   // Parse the key path (e.g., "substation.missing" -> translations.substation.missing)
   const path = key.split('.');

@@ -1,12 +1,13 @@
-import { css, html, LitElement, property, TemplateResult } from 'lit-element';
+import { css, html, property, TemplateResult } from 'lit-element';
 
 import { Nsdoc } from '@openscd/open-scd/src/foundation/nsdoc.js';
 
 import './subscription/fcda-binding-list.js';
 import './subscription/later-binding/ext-ref-ln-binding-list.js';
+import { DirectDialogMixin } from '../directDialogMixin.js';
 
 /** An editor [[`plugin`]] for Subscribe Data Binding (SMV). */
-export default class SMVSubscribeDataBindingPlugin extends LitElement {
+export default class SMVSubscribeDataBindingPlugin extends DirectDialogMixin {
   @property({ attribute: false })
   doc!: XMLDocument;
   @property({ type: Number })
@@ -34,6 +35,7 @@ export default class SMVSubscribeDataBindingPlugin extends LitElement {
         >
         </extref-ln-binding-list>
       </div>
+      ${this.renderWizardDialog()}
     </div>`;
   }
 

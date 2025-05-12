@@ -1,18 +1,17 @@
-import { LitElement, html, TemplateResult, property, css } from 'lit-element';
+import { css, html, LitElement, property, TemplateResult } from 'lit-element';
 import { get } from '../translation.js';
 
 import '@material/mwc-fab';
 
 import './communication/subnetwork-editor.js';
-import { newWizardEvent, isPublic } from '@openscd/open-scd/src/foundation.js';
+import './communication/access-point-container.js';
 
-import { createElement } from '@openscd/xml';
-
-import { newActionEvent } from '@openscd/core/foundation/deprecated/editor.js';
-import { createSubNetworkWizard } from '../wizards/subnetwork.js';
+import { newWizardEvent, WizardEvent } from '@openscd/open-scd/src/foundation.js';
+import { wizards } from '../wizards/wizard-library.js';
+import { DirectDialogMixin } from '../directDialogMixin.js';
 
 /** An editor [[`plugin`]] for editing the `Communication` section. */
-export default class CommunicationPlugin extends LitElement {
+export default class CommunicationPlugin extends DirectDialogMixin {
   /** The document being edited as provided to plugins by [[`OpenSCD`]]. */
   @property()
   doc!: XMLDocument;
@@ -55,7 +54,8 @@ export default class CommunicationPlugin extends LitElement {
           label="${get('subnetwork.wizard.title.add')}"
           @click=${() => this.openCreateSubNetworkWizard()}
         ></mwc-fab>
-      </h1>`;
+      </h1>
+      ${this.renderWizardDialog()}`;
 
     return html`<mwc-fab
         extended
@@ -74,7 +74,8 @@ export default class CommunicationPlugin extends LitElement {
                 .element=${subnetwork}
               ></subnetwork-editor>`
           )}
-      </section> `;
+      </section>
+      ${this.renderWizardDialog()}`;
   }
 
   static styles = css`

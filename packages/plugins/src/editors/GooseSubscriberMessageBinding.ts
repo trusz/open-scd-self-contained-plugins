@@ -8,20 +8,19 @@ import {
 } from 'lit-element';
 import { get } from '../translation.js';
 
-import '@material/mwc-radio';
-import '@material/mwc-formfield';
-import { RadioListItem } from '@material/mwc-list/mwc-radio-list-item';
+import { RadioListItem } from '@material/mwc-list/mwc-radio-list-item.js';
 
 import './subscription/goose/subscriber-list.js';
 import './subscription/goose/goose-list.js';
 import './subscription/ied-list.js';
 import { newViewEvent, View, ViewEvent } from './subscription/foundation.js';
+import { DirectDialogMixin } from '../directDialogMixin.js';
 
 /** Defining view outside the class, which makes it persistent. */
 let view: View = View.PUBLISHER;
 
 /** An editor [[`plugin`]] for subscribing IEDs to GOOSE messages. */
-export default class GooseSubscriberMessageBindingPlugin extends LitElement {
+export default class GooseSubscriberMessageBindingPlugin extends DirectDialogMixin {
   /** The document being edited as provided to plugins by [[`OpenSCD`]]. */
   @property()
   doc!: XMLDocument;
@@ -90,6 +89,7 @@ export default class GooseSubscriberMessageBindingPlugin extends LitElement {
           .doc=${this.doc}
         ></subscriber-list-goose>
       </div>
+      ${this.renderWizardDialog()}
     </div>`;
   }
 

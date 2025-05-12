@@ -62,30 +62,28 @@ export class OpenSCD extends LitElement {
   render(): TemplateResult {
     return html`<oscd-waiter>
       <oscd-settings .host=${this}>
-        <oscd-wizards .host=${this}>
-          <oscd-history .host=${this} .editCount=${this.historyState.editCount}>
-            <oscd-editor
+        <oscd-history .host=${this} .editCount=${this.historyState.editCount}>
+          <oscd-editor
+            .doc=${this.doc}
+            .docName=${this.docName}
+            .docId=${this.docId}
+            .host=${this}
+            .editCount=${this.historyState.editCount}
+          >
+            <oscd-layout
+              @add-external-plugin=${this.handleAddExternalPlugin}
+              @oscd-configure-plugin=${this.handleConfigurationPluginEvent}
+              @set-plugins=${ (e: SetPluginsEvent) => this.setPlugins(e.detail.selectedPlugins) }
+              .host=${this}
               .doc=${this.doc}
               .docName=${this.docName}
-              .docId=${this.docId}
-              .host=${this}
               .editCount=${this.historyState.editCount}
+              .historyState=${this.historyState}
+              .plugins=${this.storedPlugins}
             >
-              <oscd-layout
-                @add-external-plugin=${this.handleAddExternalPlugin}
-                @oscd-configure-plugin=${this.handleConfigurationPluginEvent}
-                @set-plugins=${ (e: SetPluginsEvent) => this.setPlugins(e.detail.selectedPlugins) }
-                .host=${this}
-                .doc=${this.doc}
-                .docName=${this.docName}
-                .editCount=${this.historyState.editCount}
-                .historyState=${this.historyState}
-                .plugins=${this.storedPlugins}
-              >
-              </oscd-layout>
-            </oscd-editor>
-          </oscd-history>
-        </oscd-wizards>
+            </oscd-layout>
+          </oscd-editor>
+        </oscd-history>
       </oscd-settings>
     </oscd-waiter>`;
   }
@@ -313,7 +311,7 @@ export class OpenSCD extends LitElement {
     //
     const mergedPlugins = plugins.map(plugin => {
       const isBuiltIn = !plugin?.official
-      if (!isBuiltIn){ return plugin };
+      if (!isBuiltIn){ return plugin }
 
       const builtInPlugin = [...this.getBuiltInPlugins(), ...this.parsedPlugins]
         .find(p => p.src === plugin.src);
@@ -378,7 +376,7 @@ export class OpenSCD extends LitElement {
       return !this.getBuiltInPlugins().some(b => b.src === p.src)
     })
     const mergedBuiltInPlugins = this.getBuiltInPlugins().map((builtInPlugin) => {
-      let overwrite = overwritesOfBultInPlugins.find(p => p.src === builtInPlugin.src)
+      const overwrite = overwritesOfBultInPlugins.find(p => p.src === builtInPlugin.src)
 
       const mergedPlugin: Plugin = {
         ...builtInPlugin,

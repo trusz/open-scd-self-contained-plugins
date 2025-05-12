@@ -1,4 +1,4 @@
-import { LitElement, html, TemplateResult, property, css } from 'lit-element';
+import { css, html, property, TemplateResult } from 'lit-element';
 import { get } from '../translation.js';
 
 import '@material/mwc-fab';
@@ -40,6 +40,8 @@ import { List } from '@material/mwc-list';
 import { ListItem } from '@material/mwc-list/mwc-list-item';
 import { SingleSelectedEvent } from '@material/mwc-list/mwc-list-foundation';
 
+import { DirectDialogMixin } from '../directDialogMixin.js';
+
 const templates = fetch('public/xml/templates.scd')
   .then(response => response.text())
   .then(str => new DOMParser().parseFromString(str, 'application/xml'));
@@ -53,12 +55,20 @@ const nsd7420 = fetch('public/xml/IEC_61850-7-420_2019A4.nsd')
   .then(str => new DOMParser().parseFromString(str, 'application/xml'));
 
 /** An editor [[`plugin`]] for editing the `DataTypeTemplates` section. */
-export default class TemplatesPlugin extends LitElement {
+export default class TemplatesPlugin extends DirectDialogMixin {
   /** The document being edited as provided to plugins by [[`OpenSCD`]]. */
   @property({ attribute: false })
   doc!: XMLDocument;
   @property({ type: Number })
   editCount = -1;
+
+  @property({attribute:false}) api: unknown
+
+  updated(changedProperties: Map<string, unknown>): void {
+    if (changedProperties.has('api')) {
+      console.log('@Temapltes API changed:', this.api);
+    }
+  }
 
   async openCreateLNodeTypeWizard(): Promise<void> {
     this.createDataTypeTemplates();
@@ -168,7 +178,8 @@ export default class TemplatesPlugin extends LitElement {
           label="${get('templates.add')}"
           @click=${() => this.createDataTypeTemplates()}
         ></mwc-fab>
-      </h1>`;
+      </h1>
+      ${this.renderWizardDialog()}`;
     return html`
       <div id="containerTemplates">
         <section tabindex="0">
@@ -324,6 +335,7 @@ export default class TemplatesPlugin extends LitElement {
           </filtered-list>
         </section>
       </div>
+      ${this.renderWizardDialog()}
     `;
   }
 

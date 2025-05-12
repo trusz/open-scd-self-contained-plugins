@@ -24,10 +24,14 @@ import {
   ViewEvent,
 } from './protocol104/foundation/foundation.js';
 
+import { newWizardEvent } from '@openscd/open-scd/src/foundation.js';
+import { wizards } from '../wizards/wizard-library.js';
+import { DirectDialogMixin } from '../directDialogMixin.js';
+
 /** Defining view outside the class, which makes it persistent. */
 let selectedViewProtocol104Plugin: View = View.VALUES;
 
-export default class Communication104Plugin extends LitElement {
+export default class Communication104Plugin extends DirectDialogMixin {
   @property()
   doc!: XMLDocument;
   @property({ type: Number })
@@ -90,6 +94,7 @@ export default class Communication104Plugin extends LitElement {
               ></network-104-container>`}
         </div>
       </div>
+      ${this.renderWizardDialog()}
     </section>`;
   }
 

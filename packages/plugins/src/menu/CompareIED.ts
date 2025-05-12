@@ -29,6 +29,7 @@ import {
 } from '@openscd/open-scd/src/foundation.js';
 import { newPendingStateEvent } from '@openscd/core/foundation/deprecated/waiter.js';
 import { DiffFilter } from '@openscd/open-scd/src/foundation/compare.js';
+import { DirectDialogMixin } from '../directDialogMixin.js';
 
 const tctrClass = `LN[lnClass='TCTR']`;
 const tvtrClass = `LN[lnClass='TVTR']`;
@@ -73,7 +74,7 @@ filterToIgnore[`${tvtrClass} DOI[name='Rat'] ${setMag}`] = {
 filterToIgnore[`${tvtrClass} DOI[name='VRtgSec'] ${setVal}`] = {
   full: true,
 };
-export default class CompareIEDPlugin extends LitElement {
+export default class CompareIEDPlugin extends DirectDialogMixin {
   @property({ attribute: false })
   doc!: XMLDocument;
   @property({ type: Number })
@@ -279,23 +280,23 @@ export default class CompareIEDPlugin extends LitElement {
   }
 
   render(): TemplateResult {
-    if (!this.doc) return html``;
+    if (!this.doc) return html`${this.renderWizardDialog()}`;
 
     if (this.selectedProjectIed && this.selectedTemplateIed) {
-      return this.renderDialog(
+      return html`${this.renderDialog(
         this.renderCompare(),
         get('compare-ied.resultTitle')
-      );
+      )}${this.renderWizardDialog()}`;
     } else if (this.templateDoc) {
-      return this.renderDialog(
+      return html`${this.renderDialog(
         this.renderIEDLists(),
         get('compare-ied.selectIedTitle')
-      );
+      )}${this.renderWizardDialog()}`;
     } else {
-      return this.renderDialog(
+      return html`${this.renderDialog(
         this.renderSelectTemplateFile(),
         get('compare-ied.selectProjectTitle')
-      );
+      )}${this.renderWizardDialog()}`;
     }
   }
 

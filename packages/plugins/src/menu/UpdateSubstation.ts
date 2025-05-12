@@ -1,5 +1,22 @@
-import { css, html, LitElement, query, TemplateResult } from 'lit-element';
+import {
+  css,
+  html,
+  LitElement,
+  property,
+  TemplateResult,
+  state,
+  query,
+} from 'lit-element';
 import { get } from '../translation.js';
+
+import '@material/dialog';
+import '@material/mwc-button';
+import '@material/mwc-list';
+
+import { Dialog } from '@material/mwc-dialog';
+import { List } from '@material/mwc-list';
+
+import { DirectDialogMixin } from '../directDialogMixin.js';
 
 import {
   crossProduct,
@@ -112,7 +129,7 @@ export function mergeSubstation(
   );
 }
 
-export default class UpdateSubstationPlugin extends LitElement {
+export default class UpdateSubstationPlugin extends DirectDialogMixin {
   doc!: XMLDocument;
 
   @query('#update-substation-plugin-input') pluginFileUI!: HTMLInputElement;
@@ -138,7 +155,8 @@ export default class UpdateSubstationPlugin extends LitElement {
     return html`<input @click=${(event: MouseEvent) =>
       ((<HTMLInputElement>event.target).value = '')}
                        @change=${this.updateSubstation}
-                       id="update-substation-plugin-input" accept=".sed,.scd,.ssd,.iid,.cid" type="file"></input>`;
+                       id="update-substation-plugin-input" accept=".sed,.scd,.ssd,.iid,.cid" type="file"></input>
+                ${this.renderWizardDialog()}`;
   }
 
   static styles = css`

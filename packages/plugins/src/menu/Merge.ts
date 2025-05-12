@@ -2,8 +2,9 @@ import { css, html, LitElement, query, TemplateResult } from 'lit-element';
 
 import { newWizardEvent } from '@openscd/open-scd/src/foundation.js';
 import { mergeWizard } from '@openscd/open-scd/src/wizards.js';
+import { DirectDialogMixin } from '../directDialogMixin.js';
 
-export default class MergePlugin extends LitElement {
+export default class MergePlugin extends DirectDialogMixin {
   doc!: XMLDocument;
 
   @query('#merge-plugin-input') pluginFileUI!: HTMLInputElement;
@@ -31,7 +32,8 @@ export default class MergePlugin extends LitElement {
     return html`<input @click=${(event: MouseEvent) =>
       ((<HTMLInputElement>event.target).value = '')} @change=${
       this.mergeDoc
-    } id="merge-plugin-input" accept=".sed,.scd,.ssd,.isd,.iid,.cid,.icd" type="file"></input>`;
+    } id="merge-plugin-input" accept=".sed,.scd,.ssd,.isd,.iid,.cid,.icd" type="file"></input>
+    ${this.renderWizardDialog()}`;
   }
 
   static styles = css`
