@@ -5,7 +5,7 @@ import { get } from '../translation.js';
 import '@material/mwc-fab';
 
 import './communication/subnetwork-editor.js';
-import './communication/access-point-container.js';
+import './ied/access-point-container.js';
 
 import {
   newWizardEvent,
