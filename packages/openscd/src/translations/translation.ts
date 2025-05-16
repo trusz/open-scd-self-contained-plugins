@@ -1,5 +1,5 @@
-import { en } from './translations/en.js';
-import { de } from './translations/de.js';
+import { en } from './en.js';
+import { de } from './de.js';
 
 /**
  * Translation utility module that replaces lit-translate

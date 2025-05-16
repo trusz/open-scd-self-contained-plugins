@@ -1,4 +1,6 @@
+import { Language } from '../settings';
 import { languages } from './loader.js';
+import { Translations } from './loader.js';
 
 /**
  * Translation utility module that replaces lit-translate
@@ -8,39 +10,39 @@ import { languages } from './loader.js';
 /**
  * Gets a translation string based on the current language.
  * This is a direct replacement for lit-translate's get function.
- * 
+ *
  * @param key - The translation key (e.g., 'substation.missing')
  * @param params - Optional parameters for string interpolation (e.g., { name: 'value' })
  * @returns The translated string or the key itself if not found
  */
 export function get(key: string, params?: Record<string, string>): string {
   const language = navigator.language.split('-')[0] || 'en';
-  const translations = languages[language] || languages['en'];
-  
+  const translations = languages[language as Language] || languages['en'];
+
   // Parse the key path (e.g., "substation.missing" -> translations.substation.missing)
   const path = key.split('.');
-  let result = translations;
+  let result: any = translations;
   for (const segment of path) {
     if (!result) return key;
     result = result[segment];
   }
-  
+
   if (typeof result !== 'string') return key;
-  
+
   // Handle parameter substitution if params are provided
   if (params) {
-    return Object.entries(params).reduce(
+    return Object.entries(params).reduce<string>(
       (str, [key, value]) => str.replace(new RegExp(`{{\\s*${key}\\s*}}`, 'g'), value),
       result
     );
   }
-  
+
   return result;
 }
 
 /**
  * Returns the current language code
- * 
+ *
  * @returns The current language code (e.g., 'en' or 'de')
  */
 export function getLocale(): string {
@@ -58,7 +60,7 @@ export function registerTranslateConfig(_config: unknown): void {
 /**
  * Sets the active language
  * Replaces lit-translate's use function
- * 
+ *
  * @param language - Language code to use
  */
 export function use(language: string): void {

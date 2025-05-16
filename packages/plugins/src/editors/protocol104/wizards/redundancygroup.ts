@@ -68,7 +68,7 @@ export function editRedundancyGroupWizard(
             label="${get(
               'protocol104.network.redundancyGroup.wizard.redundancyGroupNumberLabel'
             )}"
-            .maybeValue=${rGNumber}
+            .maybeValue=${rGNumber.toString()}
           ></wizard-textfield>
           ${pTypesRedundancyGroup104.map(
             pType =>
@@ -137,7 +137,7 @@ export function createRedundancyGroupWizard(
             label="${get(
               'protocol104.network.redundancyGroup.wizard.redundancyGroupNumberLabel'
             )}"
-            value="${rGNumber}"
+            value="${rGNumber.toString()}"
           ></wizard-textfield>
           ${pTypesRedundancyGroup104.map(
             pType => html`${createNetworkTextField(pType)}`
@@ -162,7 +162,7 @@ function remove(parent: Element, rGNumber: number): WizardMenuActor {
       title: get(
         'protocol104.network.redundancyGroup.wizard.removedRedundancyGroup',
         {
-          rGNumber,
+          rGNumber: rGNumber.toString(),
           subNetworkName: parent.parentElement!.getAttribute('name')!,
           apName: parent.getAttribute('apName')!,
           iedName: parent.getAttribute('iedName')!,
@@ -231,7 +231,7 @@ function editRedundancyGroupAction(
             title: get(
               'protocol104.network.redundancyGroup.wizard.editedRedundancyGroup',
               {
-                rGNumber,
+                rGNumber: rGNumber.toString(),
                 subNetworkName: parent.parentElement!.getAttribute('name')!,
                 apName: parent.getAttribute('apName')!,
                 iedName: parent.getAttribute('iedName')!,
@@ -253,7 +253,7 @@ function addRedundancyGroupAction(
       title: get(
         'protocol104.network.redundancyGroup.wizard.addedLRedundancyGroup',
         {
-          rGNumber,
+          rGNumber: rGNumber.toString(),
           subNetworkName: parent.parentElement!.getAttribute('name')!,
           apName: parent.getAttribute('apName')!,
           iedName: parent.getAttribute('iedName')!,
