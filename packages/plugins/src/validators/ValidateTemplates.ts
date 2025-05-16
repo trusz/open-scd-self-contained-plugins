@@ -1,5 +1,5 @@
-import { LitElement, property } from 'lit-element';
-import { get } from 'lit-translate';
+import { LitElement, property, html, TemplateResult } from 'lit-element';
+import { get } from '../translation.js';
 import {
   LogDetail,
   LogDetailBase,
@@ -7,10 +7,11 @@ import {
   newLogEvent,
 } from '@openscd/core/foundation/deprecated/history.js';
 import { validateChildren } from './templates/foundation.js';
+import { DirectDialogMixin } from '../directDialogMixin.js';
 
 type ValidationResult = LogDetailBase | LogDetail;
 
-export default class ValidateTemplates extends LitElement {
+export default class ValidateTemplates extends DirectDialogMixin {
   @property({ attribute: false })
   doc!: XMLDocument;
   @property()
@@ -72,5 +73,9 @@ export default class ValidateTemplates extends LitElement {
         })
       )
     );
+  }
+
+  render(): TemplateResult {
+    return html`${this.renderWizardDialog()}`;
   }
 }

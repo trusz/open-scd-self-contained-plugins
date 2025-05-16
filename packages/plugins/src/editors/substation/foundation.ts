@@ -20,7 +20,7 @@ import { typeStr } from '../../wizards/conductingequipment.js';
 import { Select } from '@material/mwc-select';
 
 import { WizardTextField } from '@openscd/open-scd/src/wizard-textfield.js';
-import { get } from 'lit-translate';
+import { get } from '../../translation.js';
 
 import { BayEditor } from './bay-editor.js';
 import { VoltageLevelEditor } from './voltage-level-editor.js';

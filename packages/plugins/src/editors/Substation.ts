@@ -1,14 +1,15 @@
 import { LitElement, html, TemplateResult, property, css } from 'lit-element';
-import { get } from 'lit-translate';
+import { get } from '../translation.js';
 
 import '@material/mwc-fab';
 
 import './substation/zeroline-pane.js';
 import { newWizardEvent } from '@openscd/open-scd/src/foundation.js';
 import { wizards } from '../wizards/wizard-library.js';
+import { DirectDialogMixin } from '../directDialogMixin.js';
 
 /** An editor [[`plugin`]] for editing the `Substation` section. */
-export default class SubstationPlugin extends LitElement {
+export default class SubstationPlugin extends DirectDialogMixin {
   /** The document being edited as provided to plugins by [[`OpenSCD`]]. */
   @property()
   doc!: XMLDocument;
@@ -37,7 +38,8 @@ export default class SubstationPlugin extends LitElement {
               @click=${() => this.openCreateSubstationWizard()}
             ></mwc-fab>
           </h1>`
-        : html``}`;
+        : html``}
+      ${this.renderWizardDialog()}`;
   }
 
   static styles = css`

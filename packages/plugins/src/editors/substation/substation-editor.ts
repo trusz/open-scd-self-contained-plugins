@@ -9,7 +9,7 @@ import {
   TemplateResult,
 } from 'lit-element';
 import { classMap } from 'lit-html/directives/class-map';
-import { get } from 'lit-translate';
+import { get } from '../../translation.js';
 
 import '@material/mwc-icon-button';
 import '@material/mwc-icon';

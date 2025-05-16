@@ -4,9 +4,10 @@ import { Nsdoc } from '@openscd/open-scd/src/foundation/nsdoc.js';
 
 import './subscription/fcda-binding-list.js';
 import './subscription/later-binding/ext-ref-ln-binding-list.js';
+import { DirectDialogMixin } from '../directDialogMixin.js';
 
 /** An editor [[`plugin`]] for Subscribe Data Binding (GOOSE). */
-export default class GooseSubscribeDataBindingPlugin extends LitElement {
+export default class GooseSubscribeDataBindingPlugin extends DirectDialogMixin {
   @property({ attribute: false })
   doc!: XMLDocument;
   @property({ type: Number })
@@ -34,6 +35,7 @@ export default class GooseSubscribeDataBindingPlugin extends LitElement {
         >
         </extref-ln-binding-list>
       </div>
+      ${this.renderWizardDialog()}
     </div>`;
   }
 

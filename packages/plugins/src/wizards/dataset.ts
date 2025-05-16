@@ -1,6 +1,6 @@
 import { CheckListItem } from '@material/mwc-list/mwc-check-list-item';
 import { html } from 'lit-element';
-import { get } from 'lit-translate';
+import { get } from '../translation.js';
 
 import '@material/mwc-button';
 import '@material/mwc-list/mwc-check-list-item';

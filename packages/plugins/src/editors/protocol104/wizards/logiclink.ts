@@ -1,5 +1,5 @@
 import { html } from 'lit-element';
-import { get } from 'lit-translate';
+import { get } from '../../../translation.js';
 
 import '@openscd/open-scd/src/wizard-textfield.js';
 import { pTypesLogicLink104 } from '../foundation/p-types.js';

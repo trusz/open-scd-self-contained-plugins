@@ -1,5 +1,5 @@
 import { html } from 'lit-html';
-import { get } from 'lit-translate';
+import { get } from '../../translation.js';
 
 import '@material/mwc-button';
 import '@material/mwc-list';
@@ -44,9 +44,11 @@ import {
 } from './foundation.js';
 
 function remove(element: Element): WizardMenuActor {
+
   return (wizard: Element): void => {
+    const removeCommand = { old: { parent: element.parentElement!, element } }
     wizard.dispatchEvent(
-      newActionEvent({ old: { parent: element.parentElement!, element } })
+      newActionEvent(removeCommand)
     );
     wizard.dispatchEvent(newWizardEvent());
   };
@@ -347,7 +349,7 @@ function updateDOTypeAction(element: Element): WizardActor {
 
 export function dOTypeWizard(
   dOTypeIdentity: string,
-  doc: XMLDocument
+  doc: XMLDocument,
 ): Wizard | undefined {
   const dotype = find(doc, 'DOType', dOTypeIdentity);
   if (!dotype) return undefined;

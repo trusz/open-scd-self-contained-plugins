@@ -1,5 +1,5 @@
 import { html, TemplateResult } from 'lit-html';
-import { get } from 'lit-translate';
+import { get } from '../translation.js';
 
 import { cloneElement, createElement } from '@openscd/xml';
 

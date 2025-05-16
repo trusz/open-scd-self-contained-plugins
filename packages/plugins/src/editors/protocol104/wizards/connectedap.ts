@@ -1,5 +1,5 @@
 import { html, TemplateResult } from 'lit-element';
-import { get } from 'lit-translate';
+import { get } from '../../../translation.js';
 import { ifDefined } from 'lit-html/directives/if-defined';
 
 import '@material/mwc-checkbox';

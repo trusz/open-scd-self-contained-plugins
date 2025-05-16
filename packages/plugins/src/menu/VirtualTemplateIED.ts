@@ -8,7 +8,7 @@ import {
   state,
   TemplateResult,
 } from 'lit-element';
-import { get } from 'lit-translate';
+import { get } from '../translation.js';
 
 import '@material/mwc-dialog';
 import '@material/mwc-list';

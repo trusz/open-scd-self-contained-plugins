@@ -1,6 +1,8 @@
 import { de } from './de.js';
 import { en } from './en.js';
-import { Language } from '@openscd/core/foundation/deprecated/settings.js';
+import { Language } from '../settings.js';
+
+// Export languages directly for use in all packages
 export const languages = { en, de };
 
 export type Translations = typeof en;

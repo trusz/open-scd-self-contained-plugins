@@ -1,5 +1,5 @@
 import { html, render, TemplateResult } from 'lit-html';
-import { get } from 'lit-translate';
+import { get } from '../translation.js';
 
 import '@material/mwc-list/mwc-list-item';
 import { ListItem } from '@material/mwc-list/mwc-list-item';

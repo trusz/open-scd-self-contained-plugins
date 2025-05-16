@@ -9,7 +9,7 @@ import {
   TemplateResult,
 } from 'lit-element';
 import { nothing } from 'lit-html';
-import { get } from 'lit-translate';
+import { get } from '../../translation.js';
 
 import { IconButtonToggle } from '@material/mwc-icon-button-toggle';
 

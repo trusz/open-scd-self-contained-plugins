@@ -1,5 +1,5 @@
-import { html, LitElement } from 'lit-element';
-import { get } from 'lit-translate';
+import { html, LitElement, TemplateResult } from 'lit-element';
+import { get } from '../translation.js';
 
 import '@material/mwc-list';
 import '@material/mwc-list/mwc-radio-list-item';
@@ -18,8 +18,9 @@ import {
   newEmptySCD,
   SupportedVersion,
 } from '@openscd/open-scd/src/schemas.js';
+import { DirectDialogMixin } from '../directDialogMixin.js';
 
-export default class NewProjectPlugin extends LitElement {
+export default class NewProjectPlugin extends DirectDialogMixin {
 
   private createNewProject(
     inputs: WizardInputElement[],
@@ -84,5 +85,9 @@ export default class NewProjectPlugin extends LitElement {
 
   async run(): Promise<void> {
     this.dispatchEvent(newWizardEvent(this.newProjectWizard()));
+  }
+
+  render(): TemplateResult {
+    return html`${this.renderWizardDialog()}`;
   }
 }

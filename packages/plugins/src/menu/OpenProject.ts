@@ -2,8 +2,9 @@ import { css, html, LitElement, query, TemplateResult } from 'lit-element';
 
 import { newOpenDocEvent } from '@openscd/core/foundation/deprecated/open-event.js';
 import { newLogEvent } from '@openscd/core/foundation/deprecated/history.js';
+import { DirectDialogMixin } from '../directDialogMixin.js';
 
-export default class OpenProjectPlugin extends LitElement {
+export default class OpenProjectPlugin extends DirectDialogMixin {
   @query('#open-plugin-input') pluginFileUI!: HTMLInputElement;
 
   async openDoc(event: Event): Promise<void> {
@@ -38,7 +39,8 @@ export default class OpenProjectPlugin extends LitElement {
     return html`<input @click=${(event: MouseEvent) =>
       ((<HTMLInputElement>event.target).value = '')} @change=${
       this.openDoc
-    } id="open-plugin-input" accept=".sed,.scd,.ssd,.isd,.iid,.cid,.icd" type="file"></input>`;
+    } id="open-plugin-input" accept=".sed,.scd,.ssd,.isd,.iid,.cid,.icd" type="file"></input>
+    ${this.renderWizardDialog()}`;
   }
 
   static styles = css`

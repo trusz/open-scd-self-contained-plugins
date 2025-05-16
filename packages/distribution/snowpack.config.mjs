@@ -33,6 +33,9 @@ export default {
     '@openscd/open-scd': '../openscd/',
     '@openscd/plugins': '../plugins/',
   },
+  devOptions: {
+    cors: true,
+  },
   buildOptions: {
     baseUrl: process.env.PUBLIC_URL || '/',
   },

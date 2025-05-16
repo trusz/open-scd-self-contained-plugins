@@ -18,6 +18,8 @@ import {
   customElement,
   TemplateResult,
   html,
+  state,
+  query
 } from 'lit-element';
 import { get } from 'lit-translate';
 
@@ -47,6 +49,10 @@ import {
 import { convertEditActiontoV1 } from './editor/edit-action-to-v1-converter.js';
 import { convertEditV1toV2 } from './editor/edit-v1-to-v2-converter.js';
 
+import { WizardEvent, WizardFactory } from '../foundation.js';
+import '../wizard-dialog.js';
+import { WizardDialog } from '../wizard-dialog.js';
+
 @customElement('oscd-editor')
 export class OscdEditor extends LitElement {
   /** The `XMLDocument` to be edited */
@@ -61,6 +67,12 @@ export class OscdEditor extends LitElement {
     type: Object,
   })
   host!: HTMLElement;
+
+  /** FIFO queue of [[`Wizard`]]s to display. */
+  @state()
+  workflow: WizardFactory[] = [];
+
+  @query('wizard-dialog') wizardUI!: WizardDialog;
 
   private getLogText(edit: EditV2): { title: string, message?: string } {
     if (isInsertV2(edit)) {
@@ -133,6 +145,21 @@ export class OscdEditor extends LitElement {
     this.docName = docName;
   }
 
+  private onWizard(we: WizardEvent) {
+    const wizard = we.detail.wizard;
+    if (wizard === null) this.workflow.shift();
+    else if (we.detail.subwizard) this.workflow.unshift(wizard);
+    else this.workflow.push(wizard);
+    this.requestUpdate('workflow');
+    this.updateComplete.then(() =>
+      this.wizardUI.updateComplete.then(() =>
+        this.wizardUI.dialog?.updateComplete.then(() =>
+          this.wizardUI.dialog?.focus()
+        )
+      )
+    );
+  }
+
   connectedCallback(): void {
     super.connectedCallback();
 
@@ -144,10 +171,15 @@ export class OscdEditor extends LitElement {
     this.host.addEventListener('oscd-edit-v2', event => this.handleEditEventV2(event));
     this.host.addEventListener('open-doc', this.onOpenDoc);
     this.host.addEventListener('oscd-open', this.handleOpenDoc);
+    this.host.addEventListener('wizard', this.onWizard.bind(this));
+    this.host.addEventListener('editor-action', () =>
+      this.wizardUI?.requestUpdate()
+    );
   }
 
   render(): TemplateResult {
-    return html`<slot></slot>`;
+    return html`<slot></slot>
+      <wizard-dialog .wizard=${this.workflow[0]?.() ?? []}></wizard-dialog>`;
   }
 
   async handleEditEventV2(event: EditEventV2) {

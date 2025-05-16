@@ -1,4 +1,5 @@
-import { LitElement, property } from 'lit-element';
+import { LitElement, property, html, TemplateResult } from 'lit-element';
+import { DirectDialogMixin } from '../directDialogMixin.js';
 
 function formatXml(xml: string, tab?: string) {
   let formatted = '',
@@ -13,7 +14,7 @@ function formatXml(xml: string, tab?: string) {
   return formatted.substring(1, formatted.length - 3);
 }
 
-export default class SaveProjectPlugin extends LitElement {
+export default class SaveProjectPlugin extends DirectDialogMixin {
   @property() doc!: XMLDocument;
   @property() docName!: string;
 
@@ -45,5 +46,9 @@ export default class SaveProjectPlugin extends LitElement {
         URL.revokeObjectURL(a.href);
       }, 5000);
     }
+  }
+
+  render(): TemplateResult {
+    return html`${this.renderWizardDialog()}`;
   }
 }

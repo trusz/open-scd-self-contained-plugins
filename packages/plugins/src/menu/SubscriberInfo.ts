@@ -1,5 +1,22 @@
-import { LitElement } from 'lit-element';
-import { get } from 'lit-translate';
+import {
+  css,
+  html,
+  LitElement,
+  property,
+  TemplateResult,
+  state,
+} from 'lit-element';
+import { get } from '../translation.js';
+
+import '@material/mwc-button';
+import '@material/mwc-dialog';
+import '@material/mwc-icon';
+import '@material/mwc-list';
+import '@material/mwc-list/mwc-list-item';
+
+import '@openscd/open-scd/src/filtered-list.js';
+import { DirectDialogMixin } from '../directDialogMixin.js';
+
 import { getVersion } from '@openscd/open-scd/src/foundation.js';
 
 import { createElement } from '@openscd/xml';
@@ -148,7 +165,7 @@ export function createMissingIEDNameSubscriberInfo(
   return simpleAction;
 }
 
-export default class SubscriberInfoPlugin extends LitElement {
+export default class SubscriberInfoPlugin extends DirectDialogMixin {
   doc!: XMLDocument;
 
   async run(): Promise<void> {
@@ -173,5 +190,9 @@ export default class SubscriberInfoPlugin extends LitElement {
     );
 
     return;
+  }
+
+  render(): TemplateResult {
+    return html`${this.renderWizardDialog()}`;
   }
 }

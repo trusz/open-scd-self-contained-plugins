@@ -6,15 +6,16 @@ import {
   TemplateResult,
   LitElement,
 } from 'lit-element';
-import { get } from 'lit-translate';
+import { get } from '../translation.js';
 
 import '@material/mwc-button';
 import '@material/mwc-dialog';
 import '@material/mwc-list';
 import '@material/mwc-list/mwc-list-item';
 import { Dialog } from '@material/mwc-dialog';
+import { DirectDialogMixin } from '../directDialogMixin.js';
 
-export default class SclHistoryPlugin extends LitElement {
+export default class SclHistoryPlugin extends DirectDialogMixin {
   @property({ attribute: false })
   doc!: XMLDocument;
   @property({ type: Number })
@@ -78,14 +79,17 @@ export default class SclHistoryPlugin extends LitElement {
   }
 
   render(): TemplateResult {
-    return html` <mwc-dialog id="historyLog" heading="${get('history.name')}">
-      <mwc-list id="historyLogContent" wrapFocus
-        >${this.renderSclHistory()}</mwc-list
-      >
-      <mwc-button slot="secondaryAction" dialogaction="close"
-        >${get('close')}</mwc-button
-      >
-    </mwc-dialog>`;
+    return html`
+      <mwc-dialog id="historyLog" heading="${get('history.name')}">
+        <mwc-list id="historyLogContent" wrapFocus
+          >${this.renderSclHistory()}</mwc-list
+        >
+        <mwc-button slot="secondaryAction" dialogaction="close"
+          >${get('close')}</mwc-button
+        >
+      </mwc-dialog>
+      ${this.renderWizardDialog()}
+    `;
   }
 
   static styles = css`

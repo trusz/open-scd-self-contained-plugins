@@ -6,7 +6,7 @@ import {
   query,
   TemplateResult,
 } from 'lit-element';
-import { get } from 'lit-translate';
+import { get } from '../../translation.js';
 import { nothing } from 'lit-html';
 
 import { IconButtonToggle } from '@material/mwc-icon-button-toggle';

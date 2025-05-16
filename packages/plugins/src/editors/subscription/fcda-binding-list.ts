@@ -11,7 +11,7 @@ import {
 } from 'lit-element';
 import { nothing, SVGTemplateResult } from 'lit-html';
 import { classMap } from 'lit-html/directives/class-map.js';
-import { get } from 'lit-translate';
+import { get } from '../../translation.js';
 
 import '@material/mwc-icon';
 import '@material/mwc-list';

@@ -47,7 +47,8 @@ import {
 import { isSCLNamespace } from '@openscd/open-scd/src/schemas.js';
 import { wizards } from './singlelinediagram/wizards/wizard-library.js';
 import { SingleSelectedEvent } from '@material/mwc-list/mwc-list-foundation';
-import { get } from 'lit-translate';
+import { get } from '../translation.js';
+import { DirectDialogMixin } from '../directDialogMixin.js';
 
 import '@material/mwc-list/mwc-list-item';
 import '@material/mwc-select';
@@ -70,7 +71,7 @@ addEventListener('open-doc', onOpenDocResetSelectedSubstation);
 /**
  * Main class plugin for Single Line Diagram editor.
  */
-export default class SingleLineDiagramPlugin extends LitElement {
+export default class SingleLineDiagramPlugin extends DirectDialogMixin {
   // The full given XML document.
   @property({ attribute: false })
   doc!: XMLDocument;
@@ -600,7 +601,8 @@ export default class SingleLineDiagramPlugin extends LitElement {
         <div id="panzoom">
           <svg xmlns="http://www.w3.org/2000/svg" id="svg"></svg>
         </div>
-      </div>`;
+      </div>
+      ${this.renderWizardDialog()}`;
   }
 
   static styles = css`

@@ -1,7 +1,7 @@
 import { customElement, html, query, TemplateResult } from 'lit-element';
 import { nothing } from 'lit-html';
 import { until } from 'lit-html/directives/until';
-import { get } from 'lit-translate';
+import { get } from '../../translation.js';
 
 import {
   getInstanceAttribute,

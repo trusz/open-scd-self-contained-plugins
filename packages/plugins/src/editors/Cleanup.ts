@@ -3,13 +3,14 @@
 import { css, html, LitElement, property, TemplateResult } from 'lit-element';
 
 import { styles } from './templates/foundation.js';
+import { DirectDialogMixin } from '../directDialogMixin.js';
 
 import './cleanup/datasets-container.js';
 import './cleanup/control-blocks-container.js';
 import './cleanup/datatypes-container.js';
 
 /** An editor [[`plugin`]] for cleaning SCL references and definitions. */
-export default class Cleanup extends LitElement {
+export default class Cleanup extends DirectDialogMixin {
   /** The document being edited as provided to plugins by [[`OpenSCD`]]. */
   @property()
   doc!: XMLDocument;
@@ -23,6 +24,7 @@ export default class Cleanup extends LitElement {
         <cleanup-control-blocks .editCount=${this.editCount} .doc=${this.doc}></cleanup-control-blocks>
         <cleanup-data-types .editCount=${this.editCount} .doc=${this.doc}></cleanup-data-types>
       </div>
+      ${this.renderWizardDialog()}
     `;
   }
 

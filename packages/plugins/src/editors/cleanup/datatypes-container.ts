@@ -11,7 +11,7 @@ import {
   queryAll,
 } from 'lit-element';
 import { classMap } from 'lit-html/directives/class-map';
-import { get } from 'lit-translate';
+import { get } from '../../translation.js';
 
 import '@material/mwc-button';
 import '@material/mwc-icon';
@@ -333,7 +333,7 @@ export class CleanupDataTypes extends LitElement {
         this.indexDataTypeTemplates(startingLNodeTypes);
 
       /* Create usage counter for children of LNodeTypes that are used.
-         We remember that _all_ valid template usages within a project 
+         We remember that _all_ valid template usages within a project
         stem from LNodeTypes. */
       cleanItems.forEach(item => {
         if (item.tagName === 'LNodeType') {
@@ -345,10 +345,10 @@ export class CleanupDataTypes extends LitElement {
       });
 
       /* Check to see if children of unused DOType, DAType are present
-         If so then unless they are from a data type which is part of 
+         If so then unless they are from a data type which is part of
          the main usage counter they can be safely removed.
-         If they are part of the main usage counter, then this does not 
-         need to be considered as these DOType and DAType elements are 
+         If they are part of the main usage counter, then this does not
+         need to be considered as these DOType and DAType elements are
          dangling, they're usage is not relevant. */
       cleanItems.forEach(item => {
         if (['DOType', 'DAType'].includes(item.tagName)) {
@@ -362,7 +362,7 @@ export class CleanupDataTypes extends LitElement {
         }
       });
 
-      /* Now go through our usage index. If usage is zero then we can 
+      /* Now go through our usage index. If usage is zero then we can
          remove the data type template safely. */
       dataTypeUsageCounter?.forEach((count, dataTypeId) => {
         if (count <= 0) {

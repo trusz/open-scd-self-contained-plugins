@@ -1,5 +1,5 @@
 import { html, TemplateResult } from 'lit-element';
-import { get } from 'lit-translate';
+import { get } from '../../../translation.js';
 import { live } from 'lit-html/directives/live';
 
 import '@material/mwc-list/mwc-list-item';

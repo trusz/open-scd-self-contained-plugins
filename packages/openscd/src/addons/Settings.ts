@@ -7,7 +7,6 @@ import {
   LitElement,
   css,
 } from 'lit-element';
-import { get, registerTranslateConfig, use } from 'lit-translate';
 
 import '@material/mwc-button';
 import '@material/mwc-dialog';
@@ -23,16 +22,21 @@ import { Switch } from '@material/mwc-switch';
 import { getTheme } from '../themes.js';
 
 import { newLogEvent } from '@openscd/core/foundation/deprecated/history.js';
-import { 
-  Settings, 
-  SettingsUIEvent, 
+import {
+  Settings,
+  SettingsUIEvent,
   Language,
   NsdVersions,
   NsdVersion,
   LoadNsdocEvent,
-  newLoadNsdocEvent
+  newLoadNsdocEvent,
 } from '@openscd/core/foundation/deprecated/settings.js';
-import { languages, loader } from '../translations/loader.js';
+import { languages, loader } from '../../../plugins/src/translations/loader.js';
+import {
+  get,
+  use,
+  registerTranslateConfig
+} from '../../../plugins/src/translations/translation.js';
 
 import '../WizardDivider.js';
 import { WizardDialog } from '../wizard-dialog.js';

@@ -14,7 +14,7 @@ import {
   compareNames,
   newWizardEvent,
 } from '@openscd/open-scd/src/foundation.js';
-import { get } from 'lit-translate';
+import { get } from '../../translation.js';
 import { createConnectedApWizard } from './wizards/connectedap.js';
 import { Base104Container } from './base-container.js';
 import { getTypeAttribute } from './foundation/foundation.js';

@@ -1,4 +1,4 @@
-import { html, LitElement } from 'lit-element';
+import { html, LitElement, TemplateResult } from 'lit-element';
 import { unsafeHTML } from 'lit-html/directives/unsafe-html';
 import * as marked from 'marked';
 
@@ -8,6 +8,7 @@ import '@openscd/open-scd/src/finder-list.js';
 import { newWizardEvent, Wizard } from '@openscd/open-scd/src/foundation.js';
 import { openSCDIcon } from '@openscd/open-scd/src/icons/icons.js';
 import { Directory } from '@openscd/open-scd/src/finder-list.js';
+import { DirectDialogMixin } from '../directDialogMixin.js';
 
 const GITHUB_WIKI_LINK_PATTERN = /https:\/\/github\.com\/openscd\/open-scd\/wiki\/([^)]*)/g;
 const MD_LINK_TITLE_PATTERN ='([^\\]]*)';
@@ -81,8 +82,12 @@ export function aboutBoxWizard(): Wizard {
   ];
 }
 
-export default class HelpPlugin extends LitElement {
+export default class HelpPlugin extends DirectDialogMixin {
   async run(): Promise<void> {
     this.dispatchEvent(newWizardEvent(aboutBoxWizard()));
+  }
+
+  render(): TemplateResult {
+    return html`${this.renderWizardDialog()}`;
   }
 }

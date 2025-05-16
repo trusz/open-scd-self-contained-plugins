@@ -7,7 +7,7 @@ import {
   state,
   TemplateResult,
 } from 'lit-element';
-import { get } from 'lit-translate';
+import { get } from '../translation.js';
 import { nothing } from 'lit-html';
 
 import '@material/mwc-list/mwc-check-list-item';
@@ -26,9 +26,10 @@ import {
 } from '@openscd/open-scd/src/foundation.js';
 import { Nsdoc } from '@openscd/open-scd/src/foundation/nsdoc.js';
 import { getIcon } from '@openscd/open-scd/src/icons/icons.js';
+import { DirectDialogMixin } from '../directDialogMixin.js';
 
 /** An editor [[`plugin`]] for editing the `IED` section. */
-export default class IedPlugin extends LitElement {
+export default class IedPlugin extends DirectDialogMixin {
   /** The document being edited as provided to plugins by [[`OpenSCD`]]. */
   @property()
   doc!: XMLDocument;
@@ -232,11 +233,13 @@ export default class IedPlugin extends LitElement {
           .selectedLNClasses=${this.calcSelectedLNClasses()}
           .nsdoc=${this.nsdoc}
         ></ied-container>
+        ${this.renderWizardDialog()}
       </section>`;
     }
     return html`<h1>
       <span style="color: var(--base1)">${get('iededitor.missing')}</span>
-    </h1>`;
+    </h1>
+    ${this.renderWizardDialog()}`;
   }
 
   static styles = css`

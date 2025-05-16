@@ -1,6 +1,6 @@
 import { html, TemplateResult } from 'lit-element';
 import { ifDefined } from 'lit-html/directives/if-defined';
-import { get } from 'lit-translate';
+import { get } from '../translation.js';
 
 import '@material/mwc-checkbox';
 import '@material/mwc-formfield';

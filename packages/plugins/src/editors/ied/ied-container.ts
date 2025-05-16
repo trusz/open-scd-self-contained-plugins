@@ -6,7 +6,7 @@ import {
   TemplateResult,
 } from 'lit-element';
 import { nothing } from 'lit-html';
-import { get } from 'lit-translate';
+import { get } from '../../translation.js';
 
 import '@openscd/open-scd/src/action-pane.js';
 import './access-point-container.js';

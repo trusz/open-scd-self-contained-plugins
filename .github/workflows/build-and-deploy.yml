@@ -1,10 +1,12 @@
 name: Build and Deploy
 on:
+  workflow_dispatch:
   push:
     branches:
       - main
     paths:
       - "packages/**"
+
 
 jobs:
   build-and-deploy:
@@ -25,7 +27,6 @@ jobs:
           npm i @nx/nx-linux-x64-gnu
           npm clean-install
           npm run-script build
-          npm run-script doc
 
       - name: Copy Core Docs to OpenSCD
         run: |
@@ -40,5 +41,4 @@ jobs:
         with:
           branch: master
           folder: packages/distribution/build
-          repository-name: openscd/openscd.github.io
-          ssh-key: ${{ secrets.DEPLOY_KEY }}
+          token: ${{ secrets.GITHUB_TOKEN }}

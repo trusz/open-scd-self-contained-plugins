@@ -6,7 +6,7 @@ import {
   query,
   TemplateResult,
 } from 'lit-element';
-import { get } from 'lit-translate';
+import { get } from '../translation.js';
 
 import { RadioListItem } from '@material/mwc-list/mwc-radio-list-item.js';
 
@@ -14,12 +14,13 @@ import './subscription/sampledvalues/subscriber-list.js';
 import './subscription/sampledvalues/smv-list.js';
 import './subscription/ied-list.js';
 import { newViewEvent, View, ViewEvent } from './subscription/foundation.js';
+import { DirectDialogMixin } from '../directDialogMixin.js';
 
 /** Defining view outside the class, which makes it persistent. */
 let view: View = View.PUBLISHER;
 
 /** An editor [[`plugin`]] for subscribing IEDs to Sampled Values. */
-export default class SMVSubscriberMessageBindingPlugin extends LitElement {
+export default class SMVSubscriberMessageBindingPlugin extends DirectDialogMixin {
   /** The document being edited as provided to plugins by [[`OpenSCD`]]. */
   @property()
   doc!: XMLDocument;
@@ -88,6 +89,7 @@ export default class SMVSubscriberMessageBindingPlugin extends LitElement {
           .doc=${this.doc}
         ></subscriber-list-smv>
       </div>
+      ${this.renderWizardDialog()}
     </div>`;
   }
 

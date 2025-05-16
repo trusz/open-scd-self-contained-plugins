@@ -1,4 +1,4 @@
-import { get } from 'lit-translate';
+import { get } from '../../../translation.js';
 import { html, TemplateResult } from 'lit-element';
 import { Select } from '@material/mwc-select';
 import { SelectedEvent } from '@material/mwc-list/mwc-list-foundation';

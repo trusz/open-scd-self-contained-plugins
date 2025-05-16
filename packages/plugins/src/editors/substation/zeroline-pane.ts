@@ -7,7 +7,7 @@ import {
   css,
   query,
 } from 'lit-element';
-import { get } from 'lit-translate';
+import { get } from '../../translation.js';
 
 import '@material/mwc-icon-button';
 import '@material/mwc-icon-button-toggle';
