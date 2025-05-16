@@ -77,7 +77,7 @@ function eNumValWizard(options) {
             get('enum-val.wizard.title.add'),
             createEnumValAction(options.parent),
             nextOrd(options.parent),
-            null,
+            null, // desc is uncommon on EnumVal
             '',
             undefined,
         ];

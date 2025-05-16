@@ -58,7 +58,7 @@ function groupLNodesToFunctions(lNodes) {
     });
     return functionElements;
 }
-export default class VirtualTemplateIED extends LitElement {
+class VirtualTemplateIED extends LitElement {
     constructor() {
         super(...arguments);
         this.editCount = -1;
@@ -230,6 +230,7 @@ VirtualTemplateIED.styles = css `
       margin-top: 16px;
     }
   `;
+export default VirtualTemplateIED;
 __decorate([
     property({ attribute: false })
 ], VirtualTemplateIED.prototype, "doc", void 0);

@@ -3,16 +3,14 @@ import { css, html, property } from '../../../_snowpack/pkg/lit-element.js';
 import { get } from '../translation.js';
 import '../../../_snowpack/pkg/@material/mwc-fab.js';
 import './communication/subnetwork-editor.js';
-// import './communication/access-point-container.js';
 import './ied/access-point-container.js';
-import { newWizardEvent } from '../../../openscd/src/foundation.js';
+import { newWizardEvent, isPublic } from '../../../openscd/src/foundation.js';
 import { createElement } from '../../../_snowpack/link/packages/xml/dist/index.js';
 import { newActionEvent } from '../../../_snowpack/link/packages/core/dist/foundation/deprecated/editor.js';
-import { DirectDialogMixin } from '../directDialogMixin.js';
 import { createSubNetworkWizard } from '../wizards/subnetwork.js';
-import { isPublic } from './communication/foundation.js';
+import { DirectDialogMixin } from '../directDialogMixin.js';
 /** An editor [[`plugin`]] for editing the `Communication` section. */
-export default class CommunicationPlugin extends DirectDialogMixin {
+class CommunicationPlugin extends DirectDialogMixin {
     constructor() {
         super(...arguments);
         this.editCount = -1;
@@ -100,6 +98,7 @@ CommunicationPlugin.styles = css `
       right: 32px;
     }
   `;
+export default CommunicationPlugin;
 __decorate([
     property()
 ], CommunicationPlugin.prototype, "doc", void 0);

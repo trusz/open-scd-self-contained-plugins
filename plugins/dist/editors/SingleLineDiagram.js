@@ -27,7 +27,7 @@ addEventListener('open-doc', onOpenDocResetSelectedSubstation);
 /**
  * Main class plugin for Single Line Diagram editor.
  */
-export default class SingleLineDiagramPlugin extends DirectDialogMixin {
+class SingleLineDiagramPlugin extends DirectDialogMixin {
     get substations() {
         return this.doc
             ? Array.from(this.doc.querySelectorAll(':root > Substation')).sort((a, b) => compareNames(a, b))
@@ -439,6 +439,7 @@ SingleLineDiagramPlugin.styles = css `
       transition: transform 200ms linear, box-shadow 250ms linear;
     }
   `;
+export default SingleLineDiagramPlugin;
 __decorate([
     property({ attribute: false })
 ], SingleLineDiagramPlugin.prototype, "doc", void 0);

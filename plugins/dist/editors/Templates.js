@@ -25,7 +25,7 @@ const nsd7420 = fetch('public/xml/IEC_61850-7-420_2019A4.nsd')
     .then(response => response.text())
     .then(str => new DOMParser().parseFromString(str, 'application/xml'));
 /** An editor [[`plugin`]] for editing the `DataTypeTemplates` section. */
-export default class TemplatesPlugin extends DirectDialogMixin {
+class TemplatesPlugin extends DirectDialogMixin {
     constructor() {
         super(...arguments);
         this.editCount = -1;
@@ -238,6 +238,7 @@ TemplatesPlugin.styles = css `
       }
     }
   `;
+export default TemplatesPlugin;
 __decorate([
     property({ attribute: false })
 ], TemplatesPlugin.prototype, "doc", void 0);

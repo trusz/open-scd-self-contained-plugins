@@ -4,12 +4,7 @@ export default {
       "@web/dev-server-core",
       "@web/dev-server-esbuild",
       "esbuild",
-      "crypto",
-      "lit-html/is-server.js"
-    ],
-    knownEntrypoints: [
-      "lit-html",
-      "lit-element"
+      "crypto"
     ]
   },
   exclude: [
@@ -31,7 +26,8 @@ export default {
   mount: {
     "./": "/",
     "../plugins/": "/plugins/",
-    "../openscd/": "/openscd/"
+    "../openscd/": "/openscd/",
+    "../external-plugins/": "/external-plugins/"
   },
   alias: {
     "@openscd/open-scd": "../openscd/",

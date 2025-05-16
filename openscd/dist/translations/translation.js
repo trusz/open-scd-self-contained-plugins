@@ -1,8 +1,7 @@
-import { languages } from './loader.js';
-/**
- * Translation utility module that replaces lit-translate
- * Can be used as a drop-in replacement for lit-translate's functions
- */
+import { en } from './en.js';
+import { de } from './de.js';
+// Create a languages object that contains all translation objects
+const languages = { en, de };
 /**
  * Gets a translation string based on the current language.
  * This is a direct replacement for lit-translate's get function.
@@ -13,8 +12,11 @@ import { languages } from './loader.js';
  */
 export function get(key, params) {
     const language = navigator.language.split('-')[0] || 'en';
-    // Cast language to Language type for type-safe indexing
-    const translations = languages[language] || languages['en'];
+    // Only use the language if it's one of our supported languages, otherwise fall back to English
+    const lang = language in languages
+        ? language
+        : 'en';
+    const translations = languages[lang];
     // Parse the key path (e.g., "substation.missing" -> translations.substation.missing)
     const path = key.split('.');
     let result = translations;

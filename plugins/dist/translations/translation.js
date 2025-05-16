@@ -26,7 +26,7 @@ export function get(key, params) {
         return key;
     // Handle parameter substitution if params are provided
     if (params) {
-        return Object.entries(params).reduce((str, [paramKey, value]) => str.replace(new RegExp(`{{\\s*${paramKey}\\s*}}`, 'g'), value), result);
+        return Object.entries(params).reduce((str, [key, value]) => str.replace(new RegExp(`{{\\s*${key}\\s*}}`, 'g'), value), result);
     }
     return result;
 }

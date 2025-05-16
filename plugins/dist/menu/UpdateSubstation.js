@@ -54,7 +54,7 @@ export function mergeSubstation(element, currentDoc, docWithSubstation) {
         auto: () => true,
     })));
 }
-export default class UpdateSubstationPlugin extends DirectDialogMixin {
+class UpdateSubstationPlugin extends DirectDialogMixin {
     async updateSubstation(event) {
         const file = event.target?.files?.item(0) ?? false;
         if (!file) {
@@ -82,6 +82,7 @@ UpdateSubstationPlugin.styles = css `
       opacity: 0;
     }
   `;
+export default UpdateSubstationPlugin;
 __decorate([
     query('#update-substation-plugin-input')
 ], UpdateSubstationPlugin.prototype, "pluginFileUI", void 0);

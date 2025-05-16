@@ -47,7 +47,7 @@ export function editRedundancyGroupWizard(parent, rGNumber) {
         html`<wizard-textfield
             readOnly
             label="${get("protocol104.network.redundancyGroup.wizard.redundancyGroupNumberLabel")}"
-            .maybeValue=${rGNumber}
+            .maybeValue=${rGNumber.toString()}
           ></wizard-textfield>
           ${pTypesRedundancyGroup104.map((pType) => html`${createNetworkTextField(pType, parent.querySelector(`Address > P[type$="RG${rGNumber}-${pType}"]`)?.innerHTML)}`)}
           <h3>
@@ -83,7 +83,7 @@ export function createRedundancyGroupWizard(parent, occupiedRGNumbers) {
         html`<wizard-textfield
             readOnly
             label="${get("protocol104.network.redundancyGroup.wizard.redundancyGroupNumberLabel")}"
-            value="${rGNumber}"
+            value="${rGNumber.toString()}"
           ></wizard-textfield>
           ${pTypesRedundancyGroup104.map((pType) => html`${createNetworkTextField(pType)}`)}`
       ]
@@ -96,7 +96,7 @@ function remove(parent, rGNumber) {
     const complexAction = {
       actions: [],
       title: get("protocol104.network.redundancyGroup.wizard.removedRedundancyGroup", {
-        rGNumber: String(rGNumber),
+        rGNumber: rGNumber.toString(),
         subNetworkName: parent.parentElement.getAttribute("name"),
         apName: parent.getAttribute("apName"),
         iedName: parent.getAttribute("iedName")
@@ -148,7 +148,7 @@ function editRedundancyGroupAction(parent, rGNumber) {
       {
         actions,
         title: get("protocol104.network.redundancyGroup.wizard.editedRedundancyGroup", {
-          rGNumber: String(rGNumber),
+          rGNumber: rGNumber.toString(),
           subNetworkName: parent.parentElement.getAttribute("name"),
           apName: parent.getAttribute("apName"),
           iedName: parent.getAttribute("iedName")
@@ -162,7 +162,7 @@ function addRedundancyGroupAction(parent, rGNumber) {
     const complexAction = {
       actions: [],
       title: get("protocol104.network.redundancyGroup.wizard.addedLRedundancyGroup", {
-        rGNumber: String(rGNumber),
+        rGNumber: rGNumber.toString(),
         subNetworkName: parent.parentElement.getAttribute("name"),
         apName: parent.getAttribute("apName"),
         iedName: parent.getAttribute("iedName")

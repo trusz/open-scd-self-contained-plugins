@@ -1,12 +1,27 @@
 /**
- * Checks if a SubNetwork element is intended for public display.
- *
- * @param element - The SubNetwork element to check
- * @returns true if the element should be displayed publicly
+ * Returns the first element of type ConnectedAP in the provided element's hierarchy.
+ * @param element - The reference element to search from
+ * @returns An element of type ConnectedAP or null
  */
-export function isPublic(element) {
-    // By default, all SubNetwork elements are considered public
-    // This function can be expanded to filter based on attributes or other criteria
-    return true;
+export function getCurrentConnectedAP(element) {
+    return element.closest('ConnectedAP');
+}
+/**
+ * Retrieves all ConnectedAP elements within the same IED as the provided element.
+ *
+ * @param element - The reference element to find the current ConnectedAP and its IED.
+ * @param doc - The XML document containing the SubNetwork and ConnectedAP elements.
+ * @returns An array of ConnectedAP elements belonging to the same IED as the provided element.
+ */
+export function getAllConnectedAPsOfSameIED(element, doc) {
+    if (!element || !doc) {
+        return [];
+    }
+    const currentConnectedAP = getCurrentConnectedAP(element);
+    if (!currentConnectedAP) {
+        return [];
+    }
+    const iedName = currentConnectedAP.getAttribute('iedName');
+    return Array.from(doc.querySelectorAll(`SubNetwork > ConnectedAP[iedName=${iedName}`));
 }
 //# sourceMappingURL=foundation.js.map

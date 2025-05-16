@@ -6,7 +6,7 @@ import '../../../_snowpack/pkg/@material/mwc-dialog.js';
 import '../../../_snowpack/pkg/@material/mwc-list.js';
 import '../../../_snowpack/pkg/@material/mwc-list/mwc-list-item.js';
 import { DirectDialogMixin } from '../directDialogMixin.js';
-export default class SclHistoryPlugin extends DirectDialogMixin {
+class SclHistoryPlugin extends DirectDialogMixin {
     constructor() {
         super(...arguments);
         this.editCount = -1;
@@ -79,6 +79,7 @@ SclHistoryPlugin.styles = css `
       text-decoration: none;
     }
   `;
+export default SclHistoryPlugin;
 __decorate([
     property({ attribute: false })
 ], SclHistoryPlugin.prototype, "doc", void 0);

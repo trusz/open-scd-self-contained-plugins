@@ -1,7 +1,10 @@
-import {languages} from "./loader.js";
+import {en} from "./en.js";
+import {de} from "./de.js";
+const languages = {en, de};
 export function get(key, params) {
   const language = navigator.language.split("-")[0] || "en";
-  const translations = languages[language] || languages["en"];
+  const lang = language in languages ? language : "en";
+  const translations = languages[lang];
   const path = key.split(".");
   let result = translations;
   for (const segment of path) {

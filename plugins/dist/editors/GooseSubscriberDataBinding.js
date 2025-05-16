@@ -4,7 +4,7 @@ import './subscription/fcda-binding-list.js';
 import './subscription/later-binding/ext-ref-ln-binding-list.js';
 import { DirectDialogMixin } from '../directDialogMixin.js';
 /** An editor [[`plugin`]] for Subscribe Data Binding (GOOSE). */
-export default class GooseSubscribeDataBindingPlugin extends DirectDialogMixin {
+class GooseSubscribeDataBindingPlugin extends DirectDialogMixin {
     constructor() {
         super(...arguments);
         this.editCount = -1;
@@ -52,6 +52,7 @@ GooseSubscribeDataBindingPlugin.styles = css `
       overflow-y: auto;
     }
   `;
+export default GooseSubscribeDataBindingPlugin;
 __decorate([
     property({ attribute: false })
 ], GooseSubscribeDataBindingPlugin.prototype, "doc", void 0);

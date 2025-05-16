@@ -14,12 +14,14 @@ import {get} from "../translation.js";
 import "../../../_snowpack/pkg/@material/mwc-fab.js";
 import "./communication/subnetwork-editor.js";
 import "./ied/access-point-container.js";
-import {newWizardEvent} from "../../../openscd/src/foundation.js";
+import {
+  newWizardEvent,
+  isPublic
+} from "../../../openscd/src/foundation.js";
 import {createElement} from "../../../_snowpack/link/packages/xml/dist/index.js";
 import {newActionEvent} from "../../../_snowpack/link/packages/core/dist/foundation/deprecated/editor.js";
-import {DirectDialogMixin} from "../directDialogMixin.js";
 import {createSubNetworkWizard} from "../wizards/subnetwork.js";
-import {isPublic} from "./communication/foundation.js";
+import {DirectDialogMixin} from "../directDialogMixin.js";
 export default class CommunicationPlugin extends DirectDialogMixin {
   constructor() {
     super(...arguments);

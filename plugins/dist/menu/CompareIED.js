@@ -45,7 +45,7 @@ filterToIgnore[`${tvtrClass} DOI[name='Rat'] ${setMag}`] = {
 filterToIgnore[`${tvtrClass} DOI[name='VRtgSec'] ${setVal}`] = {
     full: true,
 };
-export default class CompareIEDPlugin extends DirectDialogMixin {
+class CompareIEDPlugin extends DirectDialogMixin {
     constructor() {
         super(...arguments);
         this.editCount = -1;
@@ -231,6 +231,7 @@ CompareIEDPlugin.styles = css `
       font-weight: bold;
     }
   `;
+export default CompareIEDPlugin;
 __decorate([
     property({ attribute: false })
 ], CompareIEDPlugin.prototype, "doc", void 0);

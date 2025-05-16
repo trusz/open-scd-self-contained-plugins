@@ -7,7 +7,7 @@ import './cleanup/datasets-container.js';
 import './cleanup/control-blocks-container.js';
 import './cleanup/datatypes-container.js';
 /** An editor [[`plugin`]] for cleaning SCL references and definitions. */
-export default class Cleanup extends DirectDialogMixin {
+class Cleanup extends DirectDialogMixin {
     constructor() {
         super(...arguments);
         this.editCount = -1;
@@ -57,6 +57,7 @@ Cleanup.styles = css `
     }
   }
   `;
+export default Cleanup;
 __decorate([
     property()
 ], Cleanup.prototype, "doc", void 0);

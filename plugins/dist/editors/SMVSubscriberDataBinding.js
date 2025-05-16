@@ -4,7 +4,7 @@ import './subscription/fcda-binding-list.js';
 import './subscription/later-binding/ext-ref-ln-binding-list.js';
 import { DirectDialogMixin } from '../directDialogMixin.js';
 /** An editor [[`plugin`]] for Subscribe Data Binding (SMV). */
-export default class SMVSubscribeDataBindingPlugin extends DirectDialogMixin {
+class SMVSubscribeDataBindingPlugin extends DirectDialogMixin {
     constructor() {
         super(...arguments);
         this.editCount = -1;
@@ -52,6 +52,7 @@ SMVSubscribeDataBindingPlugin.styles = css `
       overflow-y: auto;
     }
   `;
+export default SMVSubscribeDataBindingPlugin;
 __decorate([
     property({ attribute: false })
 ], SMVSubscribeDataBindingPlugin.prototype, "doc", void 0);

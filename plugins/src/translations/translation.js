@@ -12,7 +12,7 @@ export function get(key, params) {
   if (typeof result !== "string")
     return key;
   if (params) {
-    return Object.entries(params).reduce((str, [paramKey, value]) => str.replace(new RegExp(`{{\\s*${paramKey}\\s*}}`, "g"), value), result);
+    return Object.entries(params).reduce((str, [key2, value]) => str.replace(new RegExp(`{{\\s*${key2}\\s*}}`, "g"), value), result);
   }
   return result;
 }

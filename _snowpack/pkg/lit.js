@@ -1,7 +1,6 @@
 import { b as noChange } from './common/lit-html-487c1dfc.js';
 export { n as nothing } from './common/lit-html-487c1dfc.js';
 import { r as render } from './common/render-d4c46927.js';
-import 'lit-html/is-server.js';
 
 /**
  * @license
