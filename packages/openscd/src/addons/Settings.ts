@@ -31,12 +31,12 @@ import {
   LoadNsdocEvent,
   newLoadNsdocEvent,
 } from '@openscd/core/foundation/deprecated/settings.js';
-import { languages, loader } from '../../../plugins/src/translations/loader.js';
+import { languages, loader } from '../translations/loader.js';
 import {
   get,
   use,
   registerTranslateConfig
-} from '../../../plugins/src/translations/translation.js';
+} from '../translations/translation.js';
 
 import '../WizardDivider.js';
 import { WizardDialog } from '../wizard-dialog.js';
@@ -341,7 +341,7 @@ export class OscdSettings extends LitElement {
   constructor() {
     super();
 
-    registerTranslateConfig({ loader, empty: key => key });
+    // registerTranslateConfig({ loader, empty: key => key });
     use(this.settings.language);
   }
 

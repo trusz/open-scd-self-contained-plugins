@@ -1,22 +1,27 @@
   {
-  "compilerOptions": {
-    "target": "es2020",
-    "module": "esnext",
-    "moduleResolution": "node",
-    "noEmitOnError": true,
-    "lib": ["es2020", "dom"],
-    "strict": true,
-    "esModuleInterop": false,
-    "allowSyntheticDefaultImports": true,
-    "experimentalDecorators": true,
-    "importHelpers": true,
-    "allowJs": true,
-    "skipLibCheck": true,
-    "outDir": "./dist",
-    "sourceMap": true,
-    "inlineSources": true,
-    "resolveJsonModule": true,
-    "rootDir": "./src"
-  },
-  "include": ["./src/**/*.ts", "../plugins/src/settings.ts"]
-}
+    "compilerOptions": {
+      "target": "es2020",
+      "module": "esnext",
+      "moduleResolution": "node",
+      "noEmitOnError": true,
+      "lib": [
+        "es2020",
+        "dom"
+      ],
+      "strict": true,
+      "esModuleInterop": false,
+      "allowSyntheticDefaultImports": true,
+      "experimentalDecorators": true,
+      "importHelpers": true,
+      "allowJs": true,
+      "skipLibCheck": true,
+      "outDir": "./dist",
+      "sourceMap": true,
+      "inlineSources": true,
+      "resolveJsonModule": true,
+      "rootDir": "./src"
+    },
+    "include": [
+      "./src/**/*.ts"
+    ]
+  }
