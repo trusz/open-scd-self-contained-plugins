@@ -1,13 +1,21 @@
-import { css, html, LitElement, property, TemplateResult } from 'lit-element';
+import type { TemplateResult } from 'lit-element';
+import { css, html, LitElement, property } from 'lit-element';
 import { get } from '../translation.js';
 
 import '@material/mwc-fab';
 
 import './communication/subnetwork-editor.js';
-import './communication/access-point-container.js';
+import './ied/access-point-container.js';
 
-import { newWizardEvent, WizardEvent } from '@openscd/open-scd/src/foundation.js';
+import {
+  newWizardEvent,
+  WizardEvent,
+  isPublic
+} from '@openscd/open-scd/src/foundation.js';
+import { createElement } from '@openscd/xml';
+import { newActionEvent } from '@openscd/core/foundation/deprecated/editor.js';
 import { wizards } from '../wizards/wizard-library.js';
+import { createSubNetworkWizard } from '../wizards/subnetwork.js';
 import { DirectDialogMixin } from '../directDialogMixin.js';
 
 /** An editor [[`plugin`]] for editing the `Communication` section. */
@@ -41,7 +49,7 @@ export default class CommunicationPlugin extends DirectDialogMixin {
       this.doc.querySelector(':root > Communication') ||
       this.createCommunication();
 
-    this.dispatchEvent(newWizardEvent(createSubNetworkWizard(parent!)));
+    this.dispatchEvent(newWizardEvent(createSubNetworkWizard(parent)));
   }
 
   render(): TemplateResult {
