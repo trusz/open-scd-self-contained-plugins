@@ -64,7 +64,7 @@ export function updateGSEAction(element: Element): WizardActor {
     const complexAction: ComplexAction = {
       actions: [],
       title: get('gse.action.addaddress', {
-        identity: identity(element),
+        identity: String(identity(element)),
       }),
     };
 

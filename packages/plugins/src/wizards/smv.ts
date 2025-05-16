@@ -18,7 +18,7 @@ export function updateSmvAction(element: Element): WizardActor {
     const complexAction: ComplexAction = {
       actions: [],
       title: get('smv.action.addaddress', {
-        identity: identity(element),
+        identity: String(identity(element)),
       }),
     };
 

@@ -183,7 +183,7 @@ export default class SubscriberInfoPlugin extends DirectDialogMixin {
         title:
           get('subscriber.description') +
           get('subscriber.message', {
-            updatenumber: actions.length,
+            updatenumber: String(actions.length),
           }),
         actions: actions,
       })

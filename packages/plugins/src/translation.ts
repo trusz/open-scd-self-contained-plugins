@@ -6,8 +6,16 @@ import { de } from './translations/de.js';
  * Can be used as a drop-in replacement for lit-translate's functions
  */
 
+// Define supported language types
+export type SupportedLanguage = 'en' | 'de';
+
+// Define translation types without circular reference
+export interface TranslationRecord {
+  [key: string]: string | TranslationRecord;
+}
+
 // Create a languages object that contains all translation objects
-const languages = { en, de };
+const languages: Record<SupportedLanguage, TranslationRecord> = { en, de };
 
 /**
  * Gets a translation string based on the current language.
@@ -18,13 +26,16 @@ const languages = { en, de };
  * @returns The translated string or the key itself if not found
  */
 export function get(key: string, params?: Record<string, string>): string {
-
   const language = navigator.language.split('-')[0] || 'en';
-  const translations = languages[language] || languages['en'];
+  // Only use the language if it's one of our supported languages, otherwise fall back to English
+  const lang = (language as SupportedLanguage) in languages
+    ? (language as SupportedLanguage)
+    : 'en';
+  const translations = languages[lang];
 
   // Parse the key path (e.g., "substation.missing" -> translations.substation.missing)
   const path = key.split('.');
-  let result = translations;
+  let result: any = translations;
   for (const segment of path) {
     if (!result) return key;
     result = result[segment];
@@ -34,8 +45,8 @@ export function get(key: string, params?: Record<string, string>): string {
 
   // Handle parameter substitution if params are provided
   if (params) {
-    return Object.entries(params).reduce(
-      (str, [key, value]) => str.replace(new RegExp(`{{\\s*${key}\\s*}}`, 'g'), value),
+    return Object.entries(params).reduce<string>(
+      (str, [paramKey, value]) => str.replace(new RegExp(`{{\\s*${paramKey}\\s*}}`, 'g'), value),
       result
     );
   }

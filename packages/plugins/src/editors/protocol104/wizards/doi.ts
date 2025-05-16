@@ -139,7 +139,7 @@ export function remove104Private(doiElement: Element): WizardMenuActor {
         actions: [],
         title: get('protocol104.values.removedAddresses', {
           name: getFullPath(doiElement, 'SCL'),
-          nrOfAddresses: privateElements.length,
+          nrOfAddresses: String(privateElements.length),
         }),
       };
       privateElements.forEach(privateElement => {
