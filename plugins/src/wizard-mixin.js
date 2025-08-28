@@ -15,27 +15,41 @@ export class WizardMixin extends LitElement {
   constructor() {
     super(...arguments);
     this.workflow = [];
+    this.onWizard = async (we) => {
+      we.stopImmediatePropagation();
+      we.stopPropagation();
+      const wizard = we.detail.wizard;
+      if (wizard === null) {
+        this.workflow.shift();
+      } else if (we.detail.subwizard) {
+        this.workflow.unshift(wizard);
+      } else {
+        this.workflow.push(wizard);
+      }
+      this.requestUpdate("workflow");
+      await this.updateComplete;
+      await this.wizardUI?.updateComplete;
+      await this.wizardUI.dialog?.updateComplete;
+      this.wizardUI.dialog?.focus();
+    };
+    this.onEditorAction = () => {
+      this.wizardUI?.requestUpdate();
+    };
   }
-  onWizard(we) {
-    const wizard = we.detail.wizard;
-    if (wizard === null)
-      this.workflow.shift();
-    else if (we.detail.subwizard)
-      this.workflow.unshift(wizard);
-    else
-      this.workflow.push(wizard);
-    this.requestUpdate("workflow");
-    this.updateComplete.then(() => this.wizardUI?.updateComplete.then(() => this.wizardUI?.dialog?.updateComplete.then(() => this.wizardUI?.dialog?.focus())));
+  renderWizardDialog() {
+    return html`
+      <wizard-dialog .wizard=${this.workflow[0]?.() ?? []}></wizard-dialog>
+    `;
   }
   connectedCallback() {
     super.connectedCallback();
-    this.addEventListener("wizard", this.onWizard.bind(this));
-    this.addEventListener("editor-action", () => this.wizardUI?.requestUpdate());
+    this.addEventListener("wizard", this.onWizard);
+    this.addEventListener("editor-action", this.onEditorAction);
   }
-  renderWizardDialog() {
-    return html`<wizard-dialog
-      .wizard=${this.workflow[0]?.() ?? []}
-    ></wizard-dialog>`;
+  disconnectedCallback() {
+    super.disconnectedCallback();
+    this.removeEventListener("wizard", this.onWizard);
+    this.removeEventListener("editor-action", this.onEditorAction);
   }
 }
 __decorate([
