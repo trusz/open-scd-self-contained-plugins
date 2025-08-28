@@ -1,6 +1,6 @@
 import { de } from './de.js';
 import { en } from './en.js';
-import { Language } from '@openscd/core/dist/foundation/deprecated/settings';
+import { Language } from '@openscd/core/foundation/deprecated/settings';
 export const languages = { en, de };
 
 /**
