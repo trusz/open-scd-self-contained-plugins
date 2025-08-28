@@ -7,14 +7,9 @@ import '@material/mwc-list';
 import '@material/mwc-list/mwc-list-item';
 
 import '@openscd/open-scd/src/filtered-list.js';
-import {
-  identity,
-  newWizardEvent,
-} from '@openscd/open-scd/src/foundation.js';
+import { identity, newWizardEvent } from '@openscd/open-scd/src/foundation.js';
 
-import {
-  createElement,
-} from '@openscd/xml';
+import { createElement } from '@openscd/xml';
 
 import { newActionEvent } from '@openscd/core/foundation/deprecated/editor.js';
 import { styles } from './templates/foundation.js';
@@ -40,7 +35,7 @@ import { List } from '@material/mwc-list';
 import { ListItem } from '@material/mwc-list/mwc-list-item';
 import { SingleSelectedEvent } from '@material/mwc-list/mwc-list-foundation';
 
-import { DirectDialogMixin } from '../directDialogMixin.js';
+import { WizardMixin } from '../wizard-mixin.js';
 
 const templates = fetch('public/xml/templates.scd')
   .then(response => response.text())
@@ -55,14 +50,14 @@ const nsd7420 = fetch('public/xml/IEC_61850-7-420_2019A4.nsd')
   .then(str => new DOMParser().parseFromString(str, 'application/xml'));
 
 /** An editor [[`plugin`]] for editing the `DataTypeTemplates` section. */
-export default class TemplatesPlugin extends DirectDialogMixin {
+export default class TemplatesPlugin extends WizardMixin {
   /** The document being edited as provided to plugins by [[`OpenSCD`]]. */
   @property({ attribute: false })
   doc!: XMLDocument;
   @property({ type: Number })
   editCount = -1;
 
-  @property({attribute:false}) api: unknown
+  @property({ attribute: false }) api: unknown;
 
   updated(changedProperties: Map<string, unknown>): void {
     if (changedProperties.has('api')) {
@@ -171,15 +166,15 @@ export default class TemplatesPlugin extends DirectDialogMixin {
   render(): TemplateResult {
     if (!this.doc?.querySelector(':root > DataTypeTemplates'))
       return html`<h1>
-        <span style="color: var(--base1)">${get('templates.missing')}</span>
-        <mwc-fab
-          extended
-          icon="add"
-          label="${get('templates.add')}"
-          @click=${() => this.createDataTypeTemplates()}
-        ></mwc-fab>
-      </h1>
-      ${this.renderWizardDialog()}`;
+          <span style="color: var(--base1)">${get('templates.missing')}</span>
+          <mwc-fab
+            extended
+            icon="add"
+            label="${get('templates.add')}"
+            @click=${() => this.createDataTypeTemplates()}
+          ></mwc-fab>
+        </h1>
+        ${this.renderWizardDialog()}`;
     return html`
       <div id="containerTemplates">
         <section tabindex="0">

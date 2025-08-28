@@ -3,14 +3,14 @@
 import { css, html, LitElement, property, TemplateResult } from 'lit-element';
 
 import { styles } from './templates/foundation.js';
-import { DirectDialogMixin } from '../directDialogMixin.js';
+import { WizardMixin } from '../wizard-mixin.js';
 
 import './cleanup/datasets-container.js';
 import './cleanup/control-blocks-container.js';
 import './cleanup/datatypes-container.js';
 
 /** An editor [[`plugin`]] for cleaning SCL references and definitions. */
-export default class Cleanup extends DirectDialogMixin {
+export default class Cleanup extends WizardMixin {
   /** The document being edited as provided to plugins by [[`OpenSCD`]]. */
   @property()
   doc!: XMLDocument;
@@ -20,9 +20,18 @@ export default class Cleanup extends DirectDialogMixin {
   render(): TemplateResult {
     return html`
       <div class="cleanup">
-        <cleanup-datasets .editCount=${this.editCount} .doc=${this.doc}></cleanup-datasets>
-        <cleanup-control-blocks .editCount=${this.editCount} .doc=${this.doc}></cleanup-control-blocks>
-        <cleanup-data-types .editCount=${this.editCount} .doc=${this.doc}></cleanup-data-types>
+        <cleanup-datasets
+          .editCount=${this.editCount}
+          .doc=${this.doc}
+        ></cleanup-datasets>
+        <cleanup-control-blocks
+          .editCount=${this.editCount}
+          .doc=${this.doc}
+        ></cleanup-control-blocks>
+        <cleanup-data-types
+          .editCount=${this.editCount}
+          .doc=${this.doc}
+        ></cleanup-data-types>
       </div>
       ${this.renderWizardDialog()}
     `;

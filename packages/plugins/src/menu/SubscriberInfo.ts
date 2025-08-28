@@ -15,7 +15,7 @@ import '@material/mwc-list';
 import '@material/mwc-list/mwc-list-item';
 
 import '@openscd/open-scd/src/filtered-list.js';
-import { DirectDialogMixin } from '../directDialogMixin.js';
+import { WizardMixin } from '../wizard-mixin.js';
 
 import { getVersion } from '@openscd/open-scd/src/foundation.js';
 
@@ -165,7 +165,7 @@ export function createMissingIEDNameSubscriberInfo(
   return simpleAction;
 }
 
-export default class SubscriberInfoPlugin extends DirectDialogMixin {
+export default class SubscriberInfoPlugin extends WizardMixin {
   doc!: XMLDocument;
 
   async run(): Promise<void> {

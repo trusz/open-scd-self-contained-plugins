@@ -26,7 +26,7 @@ import {
   newActionEvent,
 } from '@openscd/core/foundation/deprecated/editor.js';
 import { newLogEvent } from '@openscd/core/foundation/deprecated/history';
-import { DirectDialogMixin } from '../directDialogMixin.js';
+import { WizardMixin } from '../wizard-mixin.js';
 
 function uniqueTemplateIedName(doc: XMLDocument, ied: Element): string {
   const [manufacturer, type] = ['manufacturer', 'type'].map(attr =>
@@ -368,7 +368,7 @@ function isIedNameUnique(ied: Element, doc: Document): boolean {
   return true;
 }
 
-export default class ImportingIedPlugin extends DirectDialogMixin {
+export default class ImportingIedPlugin extends WizardMixin {
   @property({ attribute: false })
   doc!: XMLDocument;
   @property({ type: Number })
@@ -577,7 +577,8 @@ export default class ImportingIedPlugin extends DirectDialogMixin {
   }
 
   render(): TemplateResult {
-    return html`${this.iedSelection}${this.renderInput()}${this.renderWizardDialog()}`;
+    return html`${this
+      .iedSelection}${this.renderInput()}${this.renderWizardDialog()}`;
   }
 
   static styles = css`

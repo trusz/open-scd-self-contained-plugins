@@ -2,9 +2,9 @@ import { css, html, LitElement, query, TemplateResult } from 'lit-element';
 
 import { newOpenDocEvent } from '@openscd/core/foundation/deprecated/open-event.js';
 import { newLogEvent } from '@openscd/core/foundation/deprecated/history.js';
-import { DirectDialogMixin } from '../directDialogMixin.js';
+import { WizardMixin } from '../wizard-mixin.js';
 
-export default class OpenProjectPlugin extends DirectDialogMixin {
+export default class OpenProjectPlugin extends WizardMixin {
   @query('#open-plugin-input') pluginFileUI!: HTMLInputElement;
 
   async openDoc(event: Event): Promise<void> {

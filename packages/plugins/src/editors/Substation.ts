@@ -6,10 +6,10 @@ import '@material/mwc-fab';
 import './substation/zeroline-pane.js';
 import { newWizardEvent } from '@openscd/open-scd/src/foundation.js';
 import { wizards } from '../wizards/wizard-library.js';
-import { DirectDialogMixin } from '../directDialogMixin.js';
+import { WizardMixin } from '../wizard-mixin.js';
 
 /** An editor [[`plugin`]] for editing the `Substation` section. */
-export default class SubstationPlugin extends DirectDialogMixin {
+export default class SubstationPlugin extends WizardMixin {
   /** The document being edited as provided to plugins by [[`OpenSCD`]]. */
   @property()
   doc!: XMLDocument;

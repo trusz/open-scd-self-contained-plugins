@@ -29,7 +29,7 @@ import {
 } from '@openscd/open-scd/src/foundation.js';
 import { newPendingStateEvent } from '@openscd/core/foundation/deprecated/waiter.js';
 import { DiffFilter } from '@openscd/open-scd/src/foundation/compare.js';
-import { DirectDialogMixin } from '../directDialogMixin.js';
+import { WizardMixin } from '../wizard-mixin.js';
 
 const tctrClass = `LN[lnClass='TCTR']`;
 const tvtrClass = `LN[lnClass='TVTR']`;
@@ -74,7 +74,7 @@ filterToIgnore[`${tvtrClass} DOI[name='Rat'] ${setMag}`] = {
 filterToIgnore[`${tvtrClass} DOI[name='VRtgSec'] ${setVal}`] = {
   full: true,
 };
-export default class CompareIEDPlugin extends DirectDialogMixin {
+export default class CompareIEDPlugin extends WizardMixin {
   @property({ attribute: false })
   doc!: XMLDocument;
   @property({ type: Number })

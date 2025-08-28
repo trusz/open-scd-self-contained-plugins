@@ -18,23 +18,21 @@ import {
   newEmptySCD,
   SupportedVersion,
 } from '@openscd/open-scd/src/schemas.js';
-import { DirectDialogMixin } from '../directDialogMixin.js';
+import { WizardMixin } from '../wizard-mixin.js';
 
-export default class NewProjectPlugin extends DirectDialogMixin {
-
+export default class NewProjectPlugin extends WizardMixin {
   private createNewProject(
     inputs: WizardInputElement[],
     wizard: Element
   ): EditorAction[] {
+    let docName = inputs[0].value ?? '';
 
-    let docName = inputs[0].value ?? ''
-
-    const acceptedFileExtension = ['.ssd', '.scd','.fsd'];
-    const isValidFileFormat = acceptedFileExtension.some((extension) => {
+    const acceptedFileExtension = ['.ssd', '.scd', '.fsd'];
+    const isValidFileFormat = acceptedFileExtension.some(extension => {
       return inputs[0].value?.endsWith(extension);
-    })
+    });
 
-    if(!isValidFileFormat) {
+    if (!isValidFileFormat) {
       docName = docName + '.scd';
     }
 

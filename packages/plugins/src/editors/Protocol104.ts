@@ -26,12 +26,12 @@ import {
 
 import { newWizardEvent } from '@openscd/open-scd/src/foundation.js';
 import { wizards } from '../wizards/wizard-library.js';
-import { DirectDialogMixin } from '../directDialogMixin.js';
+import { WizardMixin } from '../wizard-mixin.js';
 
 /** Defining view outside the class, which makes it persistent. */
 let selectedViewProtocol104Plugin: View = View.VALUES;
 
-export default class Communication104Plugin extends DirectDialogMixin {
+export default class Communication104Plugin extends WizardMixin {
   @property()
   doc!: XMLDocument;
   @property({ type: Number })

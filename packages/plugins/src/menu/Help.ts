@@ -8,10 +8,11 @@ import '@openscd/open-scd/src/finder-list.js';
 import { newWizardEvent, Wizard } from '@openscd/open-scd/src/foundation.js';
 import { openSCDIcon } from '@openscd/open-scd/src/icons/icons.js';
 import { Directory } from '@openscd/open-scd/src/finder-list.js';
-import { DirectDialogMixin } from '../directDialogMixin.js';
+import { WizardMixin } from '../wizard-mixin.js';
 
-const GITHUB_WIKI_LINK_PATTERN = /https:\/\/github\.com\/openscd\/open-scd\/wiki\/([^)]*)/g;
-const MD_LINK_TITLE_PATTERN ='([^\\]]*)';
+const GITHUB_WIKI_LINK_PATTERN =
+  /https:\/\/github\.com\/openscd\/open-scd\/wiki\/([^)]*)/g;
+const MD_LINK_TITLE_PATTERN = '([^\\]]*)';
 const HYPHEN_PATTERN = /-/g;
 
 function aboutBox(version: string) {
@@ -50,9 +51,12 @@ async function getLinkedPages(path: string[]): Promise<Directory> {
   const page = path[path.length - 1].replace(/ /g, '-');
   const res = await fetch(`/openscd/public/md/${page}.md`);
   const md = await res.text();
-  const MD_LINK_REPLACEMENT = `<a style="cursor: help; color: var(--mdc-theme-primary)"  href="https://github.com/openscd/open-scd/wiki/$2" target="_blank" >$1</a>`
+  const MD_LINK_REPLACEMENT = `<a style="cursor: help; color: var(--mdc-theme-primary)"  href="https://github.com/openscd/open-scd/wiki/$2" target="_blank" >$1</a>`;
   const unlinkedMd = md.replace(
-    new RegExp(`\\[${MD_LINK_TITLE_PATTERN}\\]\\(${GITHUB_WIKI_LINK_PATTERN.source}\\)`, 'g'),
+    new RegExp(
+      `\\[${MD_LINK_TITLE_PATTERN}\\]\\(${GITHUB_WIKI_LINK_PATTERN.source}\\)`,
+      'g'
+    ),
     MD_LINK_REPLACEMENT
   );
 
@@ -61,8 +65,7 @@ async function getLinkedPages(path: string[]): Promise<Directory> {
     ${unsafeHTML(marked.parse(unlinkedMd))}
   </div>`;
   const entries = Array.from(
-    md.matchAll( new RegExp(`\\(${GITHUB_WIKI_LINK_PATTERN.source}\\)`, 'g'))
-
+    md.matchAll(new RegExp(`\\(${GITHUB_WIKI_LINK_PATTERN.source}\\)`, 'g'))
   ).map(([_, child]) => child.replace(HYPHEN_PATTERN, ' '));
 
   return { path, header, entries };
@@ -82,7 +85,7 @@ export function aboutBoxWizard(): Wizard {
   ];
 }
 
-export default class HelpPlugin extends DirectDialogMixin {
+export default class HelpPlugin extends WizardMixin {
   async run(): Promise<void> {
     this.dispatchEvent(newWizardEvent(aboutBoxWizard()));
   }

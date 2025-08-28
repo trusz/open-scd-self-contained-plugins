@@ -1,5 +1,5 @@
 import { LitElement, property, html, TemplateResult } from 'lit-element';
-import { DirectDialogMixin } from '../directDialogMixin.js';
+import { WizardMixin } from '../wizard-mixin.js';
 
 function formatXml(xml: string, tab?: string) {
   let formatted = '',
@@ -14,7 +14,7 @@ function formatXml(xml: string, tab?: string) {
   return formatted.substring(1, formatted.length - 3);
 }
 
-export default class SaveProjectPlugin extends DirectDialogMixin {
+export default class SaveProjectPlugin extends WizardMixin {
   @property() doc!: XMLDocument;
   @property() docName!: string;
 

@@ -16,7 +16,7 @@ import '@material/mwc-list';
 import { Dialog } from '@material/mwc-dialog';
 import { List } from '@material/mwc-list';
 
-import { DirectDialogMixin } from '../directDialogMixin.js';
+import { WizardMixin } from '../wizard-mixin.js';
 
 import {
   crossProduct,
@@ -129,7 +129,7 @@ export function mergeSubstation(
   );
 }
 
-export default class UpdateSubstationPlugin extends DirectDialogMixin {
+export default class UpdateSubstationPlugin extends WizardMixin {
   doc!: XMLDocument;
 
   @query('#update-substation-plugin-input') pluginFileUI!: HTMLInputElement;

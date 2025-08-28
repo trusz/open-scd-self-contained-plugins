@@ -26,10 +26,10 @@ import {
 } from '@openscd/open-scd/src/foundation.js';
 import { Nsdoc } from '@openscd/open-scd/src/foundation/nsdoc.js';
 import { getIcon } from '@openscd/open-scd/src/icons/icons.js';
-import { DirectDialogMixin } from '../directDialogMixin.js';
+import { WizardMixin } from '../wizard-mixin.js';
 
 /** An editor [[`plugin`]] for editing the `IED` section. */
-export default class IedPlugin extends DirectDialogMixin {
+export default class IedPlugin extends WizardMixin {
   /** The document being edited as provided to plugins by [[`OpenSCD`]]. */
   @property()
   doc!: XMLDocument;
@@ -237,9 +237,9 @@ export default class IedPlugin extends DirectDialogMixin {
       </section>`;
     }
     return html`<h1>
-      <span style="color: var(--base1)">${get('iededitor.missing')}</span>
-    </h1>
-    ${this.renderWizardDialog()}`;
+        <span style="color: var(--base1)">${get('iededitor.missing')}</span>
+      </h1>
+      ${this.renderWizardDialog()}`;
   }
 
   static styles = css`

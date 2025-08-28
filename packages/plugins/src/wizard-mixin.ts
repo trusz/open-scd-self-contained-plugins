@@ -1,11 +1,8 @@
+import { LitElement, TemplateResult, html, state, query } from 'lit-element';
 import {
-  LitElement,
-  TemplateResult,
-  html,
-  state,
-  query,
-} from 'lit-element';
-import { WizardEvent, WizardFactory } from '@openscd/open-scd/src/foundation.js';
+  WizardEvent,
+  WizardFactory,
+} from '@openscd/open-scd/src/foundation.js';
 import { WizardDialog } from '@openscd/open-scd/src/wizard-dialog.js';
 import '@openscd/open-scd/src/wizard-dialog.js';
 
@@ -13,7 +10,7 @@ import '@openscd/open-scd/src/wizard-dialog.js';
  * Base class for plugins that manage their own dialogs directly
  * without depending on oscd-wizard
  */
-export class DirectDialogMixin extends LitElement {
+export class WizardMixin extends LitElement {
   /** FIFO queue of [[`Wizard`]]s to display. */
   @state()
   workflow: WizardFactory[] = [];
@@ -53,6 +50,8 @@ export class DirectDialogMixin extends LitElement {
    * Renders the wizard dialog component
    */
   protected renderWizardDialog(): TemplateResult {
-    return html`<wizard-dialog .wizard=${this.workflow[0]?.() ?? []}></wizard-dialog>`;
+    return html`<wizard-dialog
+      .wizard=${this.workflow[0]?.() ?? []}
+    ></wizard-dialog>`;
   }
 }

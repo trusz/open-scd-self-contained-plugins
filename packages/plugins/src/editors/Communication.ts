@@ -10,16 +10,16 @@ import './ied/access-point-container.js';
 import {
   newWizardEvent,
   WizardEvent,
-  isPublic
+  isPublic,
 } from '@openscd/open-scd/src/foundation.js';
 import { createElement } from '@openscd/xml';
 import { newActionEvent } from '@openscd/core/foundation/deprecated/editor.js';
 import { wizards } from '../wizards/wizard-library.js';
 import { createSubNetworkWizard } from '../wizards/subnetwork.js';
-import { DirectDialogMixin } from '../directDialogMixin.js';
+import { WizardMixin } from '../wizard-mixin.js';
 
 /** An editor [[`plugin`]] for editing the `Communication` section. */
-export default class CommunicationPlugin extends DirectDialogMixin {
+export default class CommunicationPlugin extends WizardMixin {
   /** The document being edited as provided to plugins by [[`OpenSCD`]]. */
   @property()
   doc!: XMLDocument;
@@ -55,15 +55,16 @@ export default class CommunicationPlugin extends DirectDialogMixin {
   render(): TemplateResult {
     if (!this.doc?.querySelector(':root > Communication >SubNetwork'))
       return html`<h1>
-        <span style="color: var(--base1)">${get('communication.missing')}</span
-        ><mwc-fab
-          extended
-          icon="add"
-          label="${get('subnetwork.wizard.title.add')}"
-          @click=${() => this.openCreateSubNetworkWizard()}
-        ></mwc-fab>
-      </h1>
-      ${this.renderWizardDialog()}`;
+          <span style="color: var(--base1)"
+            >${get('communication.missing')}</span
+          ><mwc-fab
+            extended
+            icon="add"
+            label="${get('subnetwork.wizard.title.add')}"
+            @click=${() => this.openCreateSubNetworkWizard()}
+          ></mwc-fab>
+        </h1>
+        ${this.renderWizardDialog()}`;
 
     return html`<mwc-fab
         extended

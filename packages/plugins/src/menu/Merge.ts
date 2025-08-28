@@ -2,9 +2,9 @@ import { css, html, LitElement, query, TemplateResult } from 'lit-element';
 
 import { newWizardEvent } from '@openscd/open-scd/src/foundation.js';
 import { mergeWizard } from '@openscd/open-scd/src/wizards.js';
-import { DirectDialogMixin } from '../directDialogMixin.js';
+import { WizardMixin } from '../wizard-mixin.js';
 
-export default class MergePlugin extends DirectDialogMixin {
+export default class MergePlugin extends WizardMixin {
   doc!: XMLDocument;
 
   @query('#merge-plugin-input') pluginFileUI!: HTMLInputElement;

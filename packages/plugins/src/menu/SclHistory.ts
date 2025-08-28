@@ -13,9 +13,9 @@ import '@material/mwc-dialog';
 import '@material/mwc-list';
 import '@material/mwc-list/mwc-list-item';
 import { Dialog } from '@material/mwc-dialog';
-import { DirectDialogMixin } from '../directDialogMixin.js';
+import { WizardMixin } from '../wizard-mixin.js';
 
-export default class SclHistoryPlugin extends DirectDialogMixin {
+export default class SclHistoryPlugin extends WizardMixin {
   @property({ attribute: false })
   doc!: XMLDocument;
   @property({ type: Number })

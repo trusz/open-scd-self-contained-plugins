@@ -7,11 +7,11 @@ import {
   newLogEvent,
 } from '@openscd/core/foundation/deprecated/history.js';
 import { validateChildren } from './templates/foundation.js';
-import { DirectDialogMixin } from '../directDialogMixin.js';
+import { WizardMixin } from '../wizard-mixin.js';
 
 type ValidationResult = LogDetailBase | LogDetail;
 
-export default class ValidateTemplates extends DirectDialogMixin {
+export default class ValidateTemplates extends WizardMixin {
   @property({ attribute: false })
   doc!: XMLDocument;
   @property()
