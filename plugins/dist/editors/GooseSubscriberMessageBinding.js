@@ -5,11 +5,11 @@ import './subscription/goose/subscriber-list.js';
 import './subscription/goose/goose-list.js';
 import './subscription/ied-list.js';
 import { newViewEvent, View } from './subscription/foundation.js';
-import { DirectDialogMixin } from '../directDialogMixin.js';
+import { WizardMixin } from '../wizard-mixin.js';
 /** Defining view outside the class, which makes it persistent. */
 let view = View.PUBLISHER;
 /** An editor [[`plugin`]] for subscribing IEDs to GOOSE messages. */
-export default class GooseSubscriberMessageBindingPlugin extends DirectDialogMixin {
+class GooseSubscriberMessageBindingPlugin extends WizardMixin {
     constructor() {
         super();
         this.editCount = -1;
@@ -83,6 +83,7 @@ GooseSubscriberMessageBindingPlugin.styles = css `
       overflow-y: scroll;
     }
   `;
+export default GooseSubscriberMessageBindingPlugin;
 __decorate([
     property()
 ], GooseSubscriberMessageBindingPlugin.prototype, "doc", void 0);

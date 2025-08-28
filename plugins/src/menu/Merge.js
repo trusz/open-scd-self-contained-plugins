@@ -12,8 +12,8 @@ var __decorate = (decorators, target, key, kind) => {
 import {css, html, query} from "../../../_snowpack/pkg/lit-element.js";
 import {newWizardEvent} from "../../../openscd/src/foundation.js";
 import {mergeWizard} from "../../../openscd/src/wizards.js";
-import {DirectDialogMixin} from "../directDialogMixin.js";
-export default class MergePlugin extends DirectDialogMixin {
+import {WizardMixin} from "../wizard-mixin.js";
+export default class MergePlugin extends WizardMixin {
   mergeDoc(event) {
     const file = event.target?.files?.item(0) ?? false;
     if (file)

@@ -7,7 +7,7 @@ import { getCommonParentElement, getConnectedTerminals, isBusBar, } from './sing
 import { isSCLNamespace } from '../../../openscd/src/schemas.js';
 import { wizards } from './singlelinediagram/wizards/wizard-library.js';
 import { get } from '../translation.js';
-import { DirectDialogMixin } from '../directDialogMixin.js';
+import { WizardMixin } from '../wizard-mixin.js';
 import '../../../_snowpack/pkg/@material/mwc-list/mwc-list-item.js';
 import '../../../_snowpack/pkg/@material/mwc-select.js';
 import '../../../_snowpack/pkg/@material/mwc-textfield.js';
@@ -27,7 +27,7 @@ addEventListener('open-doc', onOpenDocResetSelectedSubstation);
 /**
  * Main class plugin for Single Line Diagram editor.
  */
-export default class SingleLineDiagramPlugin extends DirectDialogMixin {
+class SingleLineDiagramPlugin extends WizardMixin {
     get substations() {
         return this.doc
             ? Array.from(this.doc.querySelectorAll(':root > Substation')).sort((a, b) => compareNames(a, b))
@@ -439,6 +439,7 @@ SingleLineDiagramPlugin.styles = css `
       transition: transform 200ms linear, box-shadow 250ms linear;
     }
   `;
+export default SingleLineDiagramPlugin;
 __decorate([
     property({ attribute: false })
 ], SingleLineDiagramPlugin.prototype, "doc", void 0);

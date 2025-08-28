@@ -7,10 +7,10 @@ import '../../../_snowpack/pkg/@material/mwc-formfield.js';
 import './protocol104/network-container.js';
 import './protocol104/values-container.js';
 import { newViewEvent, View, VIEW_EVENT_NAME, } from './protocol104/foundation/foundation.js';
-import { DirectDialogMixin } from '../directDialogMixin.js';
+import { WizardMixin } from '../wizard-mixin.js';
 /** Defining view outside the class, which makes it persistent. */
 let selectedViewProtocol104Plugin = View.VALUES;
-export default class Communication104Plugin extends DirectDialogMixin {
+class Communication104Plugin extends WizardMixin {
     constructor() {
         super();
         this.editCount = -1;
@@ -68,6 +68,7 @@ Communication104Plugin.styles = css `
       padding: 8px 12px 16px;
     }
   `;
+export default Communication104Plugin;
 __decorate([
     property()
 ], Communication104Plugin.prototype, "doc", void 0);

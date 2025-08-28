@@ -6,15 +6,15 @@ import '../../../_snowpack/pkg/@material/mwc-icon-button.js';
 import '../../../_snowpack/pkg/@material/mwc-list.js';
 import '../../../_snowpack/pkg/@material/mwc-list/mwc-list-item.js';
 import '../../../openscd/src/filtered-list.js';
-import { identity, newWizardEvent, } from '../../../openscd/src/foundation.js';
-import { createElement, } from '../../../_snowpack/link/packages/xml/dist/index.js';
+import { identity, newWizardEvent } from '../../../openscd/src/foundation.js';
+import { createElement } from '../../../_snowpack/link/packages/xml/dist/index.js';
 import { newActionEvent } from '../../../_snowpack/link/packages/core/dist/foundation/deprecated/editor.js';
 import { styles } from './templates/foundation.js';
 import { createEnumTypeWizard, eNumTypeEditWizard, } from './templates/enumtype-wizard.js';
 import { createDATypeWizard, editDaTypeWizard, } from './templates/datype-wizards.js';
 import { createDOTypeWizard, dOTypeWizard, } from './templates/dotype-wizards.js';
 import { createLNodeTypeWizard, lNodeTypeWizard, } from './templates/lnodetype-wizard.js';
-import { DirectDialogMixin } from '../directDialogMixin.js';
+import { WizardMixin } from '../wizard-mixin.js';
 const templates = fetch('public/xml/templates.scd')
     .then(response => response.text())
     .then(str => new DOMParser().parseFromString(str, 'application/xml'));
@@ -25,7 +25,7 @@ const nsd7420 = fetch('public/xml/IEC_61850-7-420_2019A4.nsd')
     .then(response => response.text())
     .then(str => new DOMParser().parseFromString(str, 'application/xml'));
 /** An editor [[`plugin`]] for editing the `DataTypeTemplates` section. */
-export default class TemplatesPlugin extends DirectDialogMixin {
+class TemplatesPlugin extends WizardMixin {
     constructor() {
         super(...arguments);
         this.editCount = -1;
@@ -83,15 +83,15 @@ export default class TemplatesPlugin extends DirectDialogMixin {
     render() {
         if (!this.doc?.querySelector(':root > DataTypeTemplates'))
             return html `<h1>
-        <span style="color: var(--base1)">${get('templates.missing')}</span>
-        <mwc-fab
-          extended
-          icon="add"
-          label="${get('templates.add')}"
-          @click=${() => this.createDataTypeTemplates()}
-        ></mwc-fab>
-      </h1>
-      ${this.renderWizardDialog()}`;
+          <span style="color: var(--base1)">${get('templates.missing')}</span>
+          <mwc-fab
+            extended
+            icon="add"
+            label="${get('templates.add')}"
+            @click=${() => this.createDataTypeTemplates()}
+          ></mwc-fab>
+        </h1>
+        ${this.renderWizardDialog()}`;
         return html `
       <div id="containerTemplates">
         <section tabindex="0">
@@ -238,6 +238,7 @@ TemplatesPlugin.styles = css `
       }
     }
   `;
+export default TemplatesPlugin;
 __decorate([
     property({ attribute: false })
 ], TemplatesPlugin.prototype, "doc", void 0);

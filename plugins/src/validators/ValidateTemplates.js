@@ -16,8 +16,8 @@ import {
   newLogEvent
 } from "../../../_snowpack/link/packages/core/dist/foundation/deprecated/history.js";
 import {validateChildren} from "./templates/foundation.js";
-import {DirectDialogMixin} from "../directDialogMixin.js";
-export default class ValidateTemplates extends DirectDialogMixin {
+import {WizardMixin} from "../wizard-mixin.js";
+export default class ValidateTemplates extends WizardMixin {
   dispatch(detail) {
     const kind = detail.kind;
     const title = detail.title;

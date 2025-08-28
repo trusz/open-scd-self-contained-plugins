@@ -10,7 +10,7 @@ var __decorate = (decorators, target, key, kind) => {
   return result;
 };
 import {property, html} from "../../../_snowpack/pkg/lit-element.js";
-import {DirectDialogMixin} from "../directDialogMixin.js";
+import {WizardMixin} from "../wizard-mixin.js";
 function formatXml(xml, tab) {
   let formatted = "", indent = "";
   if (!tab)
@@ -24,7 +24,7 @@ function formatXml(xml, tab) {
   });
   return formatted.substring(1, formatted.length - 3);
 }
-export default class SaveProjectPlugin extends DirectDialogMixin {
+export default class SaveProjectPlugin extends WizardMixin {
   async run() {
     if (this.doc) {
       let documentAsString = formatXml(new XMLSerializer().serializeToString(this.doc));

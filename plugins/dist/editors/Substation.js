@@ -5,9 +5,9 @@ import '../../../_snowpack/pkg/@material/mwc-fab.js';
 import './substation/zeroline-pane.js';
 import { newWizardEvent } from '../../../openscd/src/foundation.js';
 import { wizards } from '../wizards/wizard-library.js';
-import { DirectDialogMixin } from '../directDialogMixin.js';
+import { WizardMixin } from '../wizard-mixin.js';
 /** An editor [[`plugin`]] for editing the `Substation` section. */
-export default class SubstationPlugin extends DirectDialogMixin {
+class SubstationPlugin extends WizardMixin {
     constructor() {
         super(...arguments);
         this.editCount = -1;
@@ -47,6 +47,7 @@ SubstationPlugin.styles = css `
       width: 100vw;
     }
   `;
+export default SubstationPlugin;
 __decorate([
     property()
 ], SubstationPlugin.prototype, "doc", void 0);

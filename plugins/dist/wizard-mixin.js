@@ -1,11 +1,11 @@
 import { __decorate } from "../../_snowpack/pkg/tslib.js";
-import { LitElement, html, state, query, } from '../../_snowpack/pkg/lit-element.js';
+import { LitElement, html, state, query } from '../../_snowpack/pkg/lit-element.js';
 import '../../openscd/src/wizard-dialog.js';
 /**
  * Base class for plugins that manage their own dialogs directly
  * without depending on oscd-wizard
  */
-export class DirectDialogMixin extends LitElement {
+export class WizardMixin extends LitElement {
     constructor() {
         super(...arguments);
         /** FIFO queue of [[`Wizard`]]s to display. */
@@ -37,13 +37,15 @@ export class DirectDialogMixin extends LitElement {
      * Renders the wizard dialog component
      */
     renderWizardDialog() {
-        return html `<wizard-dialog .wizard=${this.workflow[0]?.() ?? []}></wizard-dialog>`;
+        return html `<wizard-dialog
+      .wizard=${this.workflow[0]?.() ?? []}
+    ></wizard-dialog>`;
     }
 }
 __decorate([
     state()
-], DirectDialogMixin.prototype, "workflow", void 0);
+], WizardMixin.prototype, "workflow", void 0);
 __decorate([
     query('wizard-dialog')
-], DirectDialogMixin.prototype, "wizardUI", void 0);
-//# sourceMappingURL=directDialogMixin.js.map
+], WizardMixin.prototype, "wizardUI", void 0);
+//# sourceMappingURL=wizard-mixin.js.map

@@ -2,12 +2,12 @@
 import { __decorate } from "../../../_snowpack/pkg/tslib.js";
 import { css, html, property } from '../../../_snowpack/pkg/lit-element.js';
 import { styles } from './templates/foundation.js';
-import { DirectDialogMixin } from '../directDialogMixin.js';
+import { WizardMixin } from '../wizard-mixin.js';
 import './cleanup/datasets-container.js';
 import './cleanup/control-blocks-container.js';
 import './cleanup/datatypes-container.js';
 /** An editor [[`plugin`]] for cleaning SCL references and definitions. */
-export default class Cleanup extends DirectDialogMixin {
+class Cleanup extends WizardMixin {
     constructor() {
         super(...arguments);
         this.editCount = -1;
@@ -15,9 +15,18 @@ export default class Cleanup extends DirectDialogMixin {
     render() {
         return html `
       <div class="cleanup">
-        <cleanup-datasets .editCount=${this.editCount} .doc=${this.doc}></cleanup-datasets>
-        <cleanup-control-blocks .editCount=${this.editCount} .doc=${this.doc}></cleanup-control-blocks>
-        <cleanup-data-types .editCount=${this.editCount} .doc=${this.doc}></cleanup-data-types>
+        <cleanup-datasets
+          .editCount=${this.editCount}
+          .doc=${this.doc}
+        ></cleanup-datasets>
+        <cleanup-control-blocks
+          .editCount=${this.editCount}
+          .doc=${this.doc}
+        ></cleanup-control-blocks>
+        <cleanup-data-types
+          .editCount=${this.editCount}
+          .doc=${this.doc}
+        ></cleanup-data-types>
       </div>
       ${this.renderWizardDialog()}
     `;
@@ -57,6 +66,7 @@ Cleanup.styles = css `
     }
   }
   `;
+export default Cleanup;
 __decorate([
     property()
 ], Cleanup.prototype, "doc", void 0);

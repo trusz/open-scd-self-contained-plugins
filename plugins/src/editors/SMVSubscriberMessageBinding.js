@@ -20,9 +20,9 @@ import "./subscription/sampledvalues/subscriber-list.js";
 import "./subscription/sampledvalues/smv-list.js";
 import "./subscription/ied-list.js";
 import {newViewEvent, View} from "./subscription/foundation.js";
-import {DirectDialogMixin} from "../directDialogMixin.js";
+import {WizardMixin} from "../wizard-mixin.js";
 let view = View.PUBLISHER;
-export default class SMVSubscriberMessageBindingPlugin extends DirectDialogMixin {
+export default class SMVSubscriberMessageBindingPlugin extends WizardMixin {
   constructor() {
     super();
     this.editCount = -1;

@@ -21,8 +21,8 @@ import {
 import {createElement} from "../../../_snowpack/link/packages/xml/dist/index.js";
 import {newActionEvent} from "../../../_snowpack/link/packages/core/dist/foundation/deprecated/editor.js";
 import {createSubNetworkWizard} from "../wizards/subnetwork.js";
-import {DirectDialogMixin} from "../directDialogMixin.js";
-export default class CommunicationPlugin extends DirectDialogMixin {
+import {WizardMixin} from "../wizard-mixin.js";
+export default class CommunicationPlugin extends WizardMixin {
   constructor() {
     super(...arguments);
     this.editCount = -1;
@@ -44,15 +44,16 @@ export default class CommunicationPlugin extends DirectDialogMixin {
   render() {
     if (!this.doc?.querySelector(":root > Communication >SubNetwork"))
       return html`<h1>
-        <span style="color: var(--base1)">${get("communication.missing")}</span
-        ><mwc-fab
-          extended
-          icon="add"
-          label="${get("subnetwork.wizard.title.add")}"
-          @click=${() => this.openCreateSubNetworkWizard()}
-        ></mwc-fab>
-      </h1>
-      ${this.renderWizardDialog()}`;
+          <span style="color: var(--base1)"
+            >${get("communication.missing")}</span
+          ><mwc-fab
+            extended
+            icon="add"
+            label="${get("subnetwork.wizard.title.add")}"
+            @click=${() => this.openCreateSubNetworkWizard()}
+          ></mwc-fab>
+        </h1>
+        ${this.renderWizardDialog()}`;
     return html`<mwc-fab
         extended
         icon="add"

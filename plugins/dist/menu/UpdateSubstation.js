@@ -4,7 +4,7 @@ import { get } from '../translation.js';
 import '../../../_snowpack/pkg/@material/dialog.js';
 import '../../../_snowpack/pkg/@material/mwc-button.js';
 import '../../../_snowpack/pkg/@material/mwc-list.js';
-import { DirectDialogMixin } from '../directDialogMixin.js';
+import { WizardMixin } from '../wizard-mixin.js';
 import { crossProduct, find, identity, newWizardEvent, tags, } from '../../../openscd/src/foundation.js';
 import { mergeWizard } from '../../../openscd/src/wizards.js';
 export function isValidReference(doc, identity) {
@@ -54,7 +54,7 @@ export function mergeSubstation(element, currentDoc, docWithSubstation) {
         auto: () => true,
     })));
 }
-export default class UpdateSubstationPlugin extends DirectDialogMixin {
+class UpdateSubstationPlugin extends WizardMixin {
     async updateSubstation(event) {
         const file = event.target?.files?.item(0) ?? false;
         if (!file) {
@@ -82,6 +82,7 @@ UpdateSubstationPlugin.styles = css `
       opacity: 0;
     }
   `;
+export default UpdateSubstationPlugin;
 __decorate([
     query('#update-substation-plugin-input')
 ], UpdateSubstationPlugin.prototype, "pluginFileUI", void 0);

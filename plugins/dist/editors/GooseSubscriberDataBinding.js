@@ -2,9 +2,9 @@ import { __decorate } from "../../../_snowpack/pkg/tslib.js";
 import { css, html, property } from '../../../_snowpack/pkg/lit-element.js';
 import './subscription/fcda-binding-list.js';
 import './subscription/later-binding/ext-ref-ln-binding-list.js';
-import { DirectDialogMixin } from '../directDialogMixin.js';
+import { WizardMixin } from '../wizard-mixin.js';
 /** An editor [[`plugin`]] for Subscribe Data Binding (GOOSE). */
-export default class GooseSubscribeDataBindingPlugin extends DirectDialogMixin {
+class GooseSubscribeDataBindingPlugin extends WizardMixin {
     constructor() {
         super(...arguments);
         this.editCount = -1;
@@ -52,6 +52,7 @@ GooseSubscribeDataBindingPlugin.styles = css `
       overflow-y: auto;
     }
   `;
+export default GooseSubscribeDataBindingPlugin;
 __decorate([
     property({ attribute: false })
 ], GooseSubscribeDataBindingPlugin.prototype, "doc", void 0);

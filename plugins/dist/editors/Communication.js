@@ -4,13 +4,13 @@ import { get } from '../translation.js';
 import '../../../_snowpack/pkg/@material/mwc-fab.js';
 import './communication/subnetwork-editor.js';
 import './ied/access-point-container.js';
-import { newWizardEvent, isPublic } from '../../../openscd/src/foundation.js';
+import { newWizardEvent, isPublic, } from '../../../openscd/src/foundation.js';
 import { createElement } from '../../../_snowpack/link/packages/xml/dist/index.js';
 import { newActionEvent } from '../../../_snowpack/link/packages/core/dist/foundation/deprecated/editor.js';
 import { createSubNetworkWizard } from '../wizards/subnetwork.js';
-import { DirectDialogMixin } from '../directDialogMixin.js';
+import { WizardMixin } from '../wizard-mixin.js';
 /** An editor [[`plugin`]] for editing the `Communication` section. */
-export default class CommunicationPlugin extends DirectDialogMixin {
+class CommunicationPlugin extends WizardMixin {
     constructor() {
         super(...arguments);
         this.editCount = -1;
@@ -38,15 +38,16 @@ export default class CommunicationPlugin extends DirectDialogMixin {
     render() {
         if (!this.doc?.querySelector(':root > Communication >SubNetwork'))
             return html `<h1>
-        <span style="color: var(--base1)">${get('communication.missing')}</span
-        ><mwc-fab
-          extended
-          icon="add"
-          label="${get('subnetwork.wizard.title.add')}"
-          @click=${() => this.openCreateSubNetworkWizard()}
-        ></mwc-fab>
-      </h1>
-      ${this.renderWizardDialog()}`;
+          <span style="color: var(--base1)"
+            >${get('communication.missing')}</span
+          ><mwc-fab
+            extended
+            icon="add"
+            label="${get('subnetwork.wizard.title.add')}"
+            @click=${() => this.openCreateSubNetworkWizard()}
+          ></mwc-fab>
+        </h1>
+        ${this.renderWizardDialog()}`;
         return html `<mwc-fab
         extended
         icon="add"
@@ -98,6 +99,7 @@ CommunicationPlugin.styles = css `
       right: 32px;
     }
   `;
+export default CommunicationPlugin;
 __decorate([
     property()
 ], CommunicationPlugin.prototype, "doc", void 0);

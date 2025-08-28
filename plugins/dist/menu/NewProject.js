@@ -7,12 +7,12 @@ import { newWizardEvent, } from '../../../openscd/src/foundation.js';
 import { newOpenDocEvent } from '../../../_snowpack/link/packages/core/dist/foundation/deprecated/open-event.js';
 import { newLogEvent } from '../../../_snowpack/link/packages/core/dist/foundation/deprecated/history.js';
 import { newEmptySCD, } from '../../../openscd/src/schemas.js';
-import { DirectDialogMixin } from '../directDialogMixin.js';
-export default class NewProjectPlugin extends DirectDialogMixin {
+import { WizardMixin } from '../wizard-mixin.js';
+export default class NewProjectPlugin extends WizardMixin {
     createNewProject(inputs, wizard) {
         let docName = inputs[0].value ?? '';
         const acceptedFileExtension = ['.ssd', '.scd', '.fsd'];
-        const isValidFileFormat = acceptedFileExtension.some((extension) => {
+        const isValidFileFormat = acceptedFileExtension.some(extension => {
             return inputs[0].value?.endsWith(extension);
         });
         if (!isValidFileFormat) {

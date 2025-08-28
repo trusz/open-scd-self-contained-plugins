@@ -9,7 +9,7 @@ import { find, identity, isPublic } from '../../../openscd/src/foundation.js';
 import { createElement } from '../../../_snowpack/link/packages/xml/dist/index.js';
 import { newActionEvent, } from '../../../_snowpack/link/packages/core/dist/foundation/deprecated/editor.js';
 import { newLogEvent } from '../../../_snowpack/link/packages/core/dist/foundation/deprecated/history.js';
-import { DirectDialogMixin } from '../directDialogMixin.js';
+import { WizardMixin } from '../wizard-mixin.js';
 function uniqueTemplateIedName(doc, ied) {
     const [manufacturer, type] = ['manufacturer', 'type'].map(attr => ied.getAttribute(attr)?.replace(/[^A-Za-z0-9_]/g, ''));
     const nameCore = manufacturer || type
@@ -231,7 +231,7 @@ function isIedNameUnique(ied, doc) {
         return false;
     return true;
 }
-export default class ImportingIedPlugin extends DirectDialogMixin {
+class ImportingIedPlugin extends WizardMixin {
     constructor() {
         super(...arguments);
         this.editCount = -1;
@@ -375,7 +375,8 @@ export default class ImportingIedPlugin extends DirectDialogMixin {
     </mwc-dialog>`);
     }
     render() {
-        return html `${this.iedSelection}${this.renderInput()}${this.renderWizardDialog()}`;
+        return html `${this
+            .iedSelection}${this.renderInput()}${this.renderWizardDialog()}`;
     }
 }
 ImportingIedPlugin.styles = css `
@@ -385,6 +386,7 @@ ImportingIedPlugin.styles = css `
       opacity: 0;
     }
   `;
+export default ImportingIedPlugin;
 __decorate([
     property({ attribute: false })
 ], ImportingIedPlugin.prototype, "doc", void 0);

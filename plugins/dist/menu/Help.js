@@ -5,7 +5,7 @@ import '../../../_snowpack/pkg/@material/mwc-icon.js';
 import '../../../openscd/src/finder-list.js';
 import { newWizardEvent } from '../../../openscd/src/foundation.js';
 import { openSCDIcon } from '../../../openscd/src/icons/icons.js';
-import { DirectDialogMixin } from '../directDialogMixin.js';
+import { WizardMixin } from '../wizard-mixin.js';
 const GITHUB_WIKI_LINK_PATTERN = /https:\/\/github\.com\/openscd\/open-scd\/wiki\/([^)]*)/g;
 const MD_LINK_TITLE_PATTERN = '([^\\]]*)';
 const HYPHEN_PATTERN = /-/g;
@@ -65,7 +65,7 @@ export function aboutBoxWizard() {
         },
     ];
 }
-export default class HelpPlugin extends DirectDialogMixin {
+export default class HelpPlugin extends WizardMixin {
     async run() {
         this.dispatchEvent(newWizardEvent(aboutBoxWizard()));
     }

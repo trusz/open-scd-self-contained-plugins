@@ -9,7 +9,7 @@ import '../../../_snowpack/pkg/@material/mwc-checkbox.js';
 import '../../../openscd/src/plain-compare-list.js';
 import { compareNames, find, getNameAttribute, identity, isPublic, } from '../../../openscd/src/foundation.js';
 import { newPendingStateEvent } from '../../../_snowpack/link/packages/core/dist/foundation/deprecated/waiter.js';
-import { DirectDialogMixin } from '../directDialogMixin.js';
+import { WizardMixin } from '../wizard-mixin.js';
 const tctrClass = `LN[lnClass='TCTR']`;
 const tvtrClass = `LN[lnClass='TVTR']`;
 const setMag = `SDI[name='setMag'] Val`;
@@ -45,7 +45,7 @@ filterToIgnore[`${tvtrClass} DOI[name='Rat'] ${setMag}`] = {
 filterToIgnore[`${tvtrClass} DOI[name='VRtgSec'] ${setVal}`] = {
     full: true,
 };
-export default class CompareIEDPlugin extends DirectDialogMixin {
+class CompareIEDPlugin extends WizardMixin {
     constructor() {
         super(...arguments);
         this.editCount = -1;
@@ -231,6 +231,7 @@ CompareIEDPlugin.styles = css `
       font-weight: bold;
     }
   `;
+export default CompareIEDPlugin;
 __decorate([
     property({ attribute: false })
 ], CompareIEDPlugin.prototype, "doc", void 0);

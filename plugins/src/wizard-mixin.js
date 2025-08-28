@@ -9,14 +9,9 @@ var __decorate = (decorators, target, key, kind) => {
     __defProp(target, key, result);
   return result;
 };
-import {
-  LitElement,
-  html,
-  state,
-  query
-} from "../../_snowpack/pkg/lit-element.js";
+import {LitElement, html, state, query} from "../../_snowpack/pkg/lit-element.js";
 import "../../openscd/src/wizard-dialog.js";
-export class DirectDialogMixin extends LitElement {
+export class WizardMixin extends LitElement {
   constructor() {
     super(...arguments);
     this.workflow = [];
@@ -38,12 +33,14 @@ export class DirectDialogMixin extends LitElement {
     this.addEventListener("editor-action", () => this.wizardUI?.requestUpdate());
   }
   renderWizardDialog() {
-    return html`<wizard-dialog .wizard=${this.workflow[0]?.() ?? []}></wizard-dialog>`;
+    return html`<wizard-dialog
+      .wizard=${this.workflow[0]?.() ?? []}
+    ></wizard-dialog>`;
   }
 }
 __decorate([
   state()
-], DirectDialogMixin.prototype, "workflow", 2);
+], WizardMixin.prototype, "workflow", 2);
 __decorate([
   query("wizard-dialog")
-], DirectDialogMixin.prototype, "wizardUI", 2);
+], WizardMixin.prototype, "wizardUI", 2);

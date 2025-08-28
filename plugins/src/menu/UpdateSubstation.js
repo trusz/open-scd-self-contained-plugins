@@ -18,7 +18,7 @@ import {get} from "../translation.js";
 import "../../../_snowpack/pkg/@material/dialog.js";
 import "../../../_snowpack/pkg/@material/mwc-button.js";
 import "../../../_snowpack/pkg/@material/mwc-list.js";
-import {DirectDialogMixin} from "../directDialogMixin.js";
+import {WizardMixin} from "../wizard-mixin.js";
 import {
   crossProduct,
   find,
@@ -70,7 +70,7 @@ export function mergeSubstation(element, currentDoc, docWithSubstation) {
     auto: () => true
   })));
 }
-export default class UpdateSubstationPlugin extends DirectDialogMixin {
+export default class UpdateSubstationPlugin extends WizardMixin {
   async updateSubstation(event) {
     const file = event.target?.files?.item(0) ?? false;
     if (!file) {

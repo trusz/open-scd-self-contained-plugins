@@ -12,8 +12,8 @@ var __decorate = (decorators, target, key, kind) => {
 import {css, html, property} from "../../../_snowpack/pkg/lit-element.js";
 import "./subscription/fcda-binding-list.js";
 import "./subscription/later-binding/ext-ref-ln-binding-list.js";
-import {DirectDialogMixin} from "../directDialogMixin.js";
-export default class SMVSubscribeDataBindingPlugin extends DirectDialogMixin {
+import {WizardMixin} from "../wizard-mixin.js";
+export default class SMVSubscribeDataBindingPlugin extends WizardMixin {
   constructor() {
     super(...arguments);
     this.editCount = -1;

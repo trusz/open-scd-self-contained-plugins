@@ -26,9 +26,9 @@ import {
   View,
   VIEW_EVENT_NAME
 } from "./protocol104/foundation/foundation.js";
-import {DirectDialogMixin} from "../directDialogMixin.js";
+import {WizardMixin} from "../wizard-mixin.js";
 let selectedViewProtocol104Plugin = View.VALUES;
-export default class Communication104Plugin extends DirectDialogMixin {
+export default class Communication104Plugin extends WizardMixin {
   constructor() {
     super();
     this.editCount = -1;

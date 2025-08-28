@@ -141,7 +141,7 @@ function getGuessDelimiter(csvString) {
  * 3rd column: identifier from the SEL namespace excluding the prefix of "db:",
  *             similar to relay word bit name (RWB), e.g. SV24T, 51P1T, IN203
  */
-export default class UpdateDescriptionSel extends LitElement {
+class UpdateDescriptionSel extends LitElement {
     processSignalList(csvString) {
         const signalList = parseCsv(csvString, getGuessDelimiter(csvString));
         const items = Array.from(this.doc.querySelectorAll('IED'))
@@ -170,6 +170,7 @@ UpdateDescriptionSel.styles = css `
       opacity: 0;
     }
   `;
+export default UpdateDescriptionSel;
 __decorate([
     query('#plugin-input')
 ], UpdateDescriptionSel.prototype, "pluginFileUI", void 0);

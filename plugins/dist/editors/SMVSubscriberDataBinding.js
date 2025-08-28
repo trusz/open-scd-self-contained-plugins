@@ -2,9 +2,9 @@ import { __decorate } from "../../../_snowpack/pkg/tslib.js";
 import { css, html, property } from '../../../_snowpack/pkg/lit-element.js';
 import './subscription/fcda-binding-list.js';
 import './subscription/later-binding/ext-ref-ln-binding-list.js';
-import { DirectDialogMixin } from '../directDialogMixin.js';
+import { WizardMixin } from '../wizard-mixin.js';
 /** An editor [[`plugin`]] for Subscribe Data Binding (SMV). */
-export default class SMVSubscribeDataBindingPlugin extends DirectDialogMixin {
+class SMVSubscribeDataBindingPlugin extends WizardMixin {
     constructor() {
         super(...arguments);
         this.editCount = -1;
@@ -52,6 +52,7 @@ SMVSubscribeDataBindingPlugin.styles = css `
       overflow-y: auto;
     }
   `;
+export default SMVSubscribeDataBindingPlugin;
 __decorate([
     property({ attribute: false })
 ], SMVSubscribeDataBindingPlugin.prototype, "doc", void 0);

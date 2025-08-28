@@ -28,8 +28,8 @@ import {
   getNameAttribute
 } from "../../../openscd/src/foundation.js";
 import {getIcon} from "../../../openscd/src/icons/icons.js";
-import {DirectDialogMixin} from "../directDialogMixin.js";
-export default class IedPlugin extends DirectDialogMixin {
+import {WizardMixin} from "../wizard-mixin.js";
+export default class IedPlugin extends WizardMixin {
   constructor() {
     super(...arguments);
     this.editCount = -1;
@@ -181,9 +181,9 @@ export default class IedPlugin extends DirectDialogMixin {
       </section>`;
     }
     return html`<h1>
-      <span style="color: var(--base1)">${get("iededitor.missing")}</span>
-    </h1>
-    ${this.renderWizardDialog()}`;
+        <span style="color: var(--base1)">${get("iededitor.missing")}</span>
+      </h1>
+      ${this.renderWizardDialog()}`;
   }
 }
 IedPlugin.styles = css`

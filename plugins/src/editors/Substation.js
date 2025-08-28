@@ -15,8 +15,8 @@ import "../../../_snowpack/pkg/@material/mwc-fab.js";
 import "./substation/zeroline-pane.js";
 import {newWizardEvent} from "../../../openscd/src/foundation.js";
 import {wizards} from "../wizards/wizard-library.js";
-import {DirectDialogMixin} from "../directDialogMixin.js";
-export default class SubstationPlugin extends DirectDialogMixin {
+import {WizardMixin} from "../wizard-mixin.js";
+export default class SubstationPlugin extends WizardMixin {
   constructor() {
     super(...arguments);
     this.editCount = -1;

@@ -12,8 +12,8 @@ var __decorate = (decorators, target, key, kind) => {
 import {css, html, query} from "../../../_snowpack/pkg/lit-element.js";
 import {newOpenDocEvent} from "../../../_snowpack/link/packages/core/dist/foundation/deprecated/open-event.js";
 import {newLogEvent} from "../../../_snowpack/link/packages/core/dist/foundation/deprecated/history.js";
-import {DirectDialogMixin} from "../directDialogMixin.js";
-export default class OpenProjectPlugin extends DirectDialogMixin {
+import {WizardMixin} from "../wizard-mixin.js";
+export default class OpenProjectPlugin extends WizardMixin {
   async openDoc(event) {
     const file = event.target?.files?.item(0) ?? false;
     if (!file)

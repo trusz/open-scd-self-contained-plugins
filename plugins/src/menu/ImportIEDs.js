@@ -27,7 +27,7 @@ import {
   newActionEvent
 } from "../../../_snowpack/link/packages/core/dist/foundation/deprecated/editor.js";
 import {newLogEvent} from "../../../_snowpack/link/packages/core/dist/foundation/deprecated/history.js";
-import {DirectDialogMixin} from "../directDialogMixin.js";
+import {WizardMixin} from "../wizard-mixin.js";
 function uniqueTemplateIedName(doc, ied) {
   const [manufacturer, type] = ["manufacturer", "type"].map((attr) => ied.getAttribute(attr)?.replace(/[^A-Za-z0-9_]/g, ""));
   const nameCore = manufacturer || type ? `${manufacturer ?? ""}${type ? "_" + type : ""}` : "TEMPLATE_IED";
@@ -204,7 +204,7 @@ function isIedNameUnique(ied, doc) {
     return false;
   return true;
 }
-export default class ImportingIedPlugin extends DirectDialogMixin {
+export default class ImportingIedPlugin extends WizardMixin {
   constructor() {
     super(...arguments);
     this.editCount = -1;

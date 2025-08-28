@@ -20,8 +20,8 @@ import "../../../_snowpack/pkg/@material/mwc-button.js";
 import "../../../_snowpack/pkg/@material/mwc-dialog.js";
 import "../../../_snowpack/pkg/@material/mwc-list.js";
 import "../../../_snowpack/pkg/@material/mwc-list/mwc-list-item.js";
-import {DirectDialogMixin} from "../directDialogMixin.js";
-export default class SclHistoryPlugin extends DirectDialogMixin {
+import {WizardMixin} from "../wizard-mixin.js";
+export default class SclHistoryPlugin extends WizardMixin {
   constructor() {
     super(...arguments);
     this.editCount = -1;

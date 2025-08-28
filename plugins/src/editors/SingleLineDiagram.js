@@ -53,7 +53,7 @@ import {
 import {isSCLNamespace} from "../../../openscd/src/schemas.js";
 import {wizards} from "./singlelinediagram/wizards/wizard-library.js";
 import {get} from "../translation.js";
-import {DirectDialogMixin} from "../directDialogMixin.js";
+import {WizardMixin} from "../wizard-mixin.js";
 import "../../../_snowpack/pkg/@material/mwc-list/mwc-list-item.js";
 import "../../../_snowpack/pkg/@material/mwc-select.js";
 import "../../../_snowpack/pkg/@material/mwc-textfield.js";
@@ -62,7 +62,7 @@ function onOpenDocResetSelectedSubstation() {
   sldEditorSelectedSubstation = void 0;
 }
 addEventListener("open-doc", onOpenDocResetSelectedSubstation);
-export default class SingleLineDiagramPlugin extends DirectDialogMixin {
+export default class SingleLineDiagramPlugin extends WizardMixin {
   get substations() {
     return this.doc ? Array.from(this.doc.querySelectorAll(":root > Substation")).sort((a, b) => compareNames(a, b)) : [];
   }

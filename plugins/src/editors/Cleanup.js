@@ -12,11 +12,11 @@ var __decorate = (decorators, target, key, kind) => {
 };
 import {css, html, property} from "../../../_snowpack/pkg/lit-element.js";
 import {styles} from "./templates/foundation.js";
-import {DirectDialogMixin} from "../directDialogMixin.js";
+import {WizardMixin} from "../wizard-mixin.js";
 import "./cleanup/datasets-container.js";
 import "./cleanup/control-blocks-container.js";
 import "./cleanup/datatypes-container.js";
-export default class Cleanup extends DirectDialogMixin {
+export default class Cleanup extends WizardMixin {
   constructor() {
     super(...arguments);
     this.editCount = -1;
@@ -24,9 +24,18 @@ export default class Cleanup extends DirectDialogMixin {
   render() {
     return html`
       <div class="cleanup">
-        <cleanup-datasets .editCount=${this.editCount} .doc=${this.doc}></cleanup-datasets>
-        <cleanup-control-blocks .editCount=${this.editCount} .doc=${this.doc}></cleanup-control-blocks>
-        <cleanup-data-types .editCount=${this.editCount} .doc=${this.doc}></cleanup-data-types>
+        <cleanup-datasets
+          .editCount=${this.editCount}
+          .doc=${this.doc}
+        ></cleanup-datasets>
+        <cleanup-control-blocks
+          .editCount=${this.editCount}
+          .doc=${this.doc}
+        ></cleanup-control-blocks>
+        <cleanup-data-types
+          .editCount=${this.editCount}
+          .doc=${this.doc}
+        ></cleanup-data-types>
       </div>
       ${this.renderWizardDialog()}
     `;

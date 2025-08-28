@@ -6,7 +6,7 @@ import '../../../_snowpack/pkg/@material/mwc-icon.js';
 import '../../../_snowpack/pkg/@material/mwc-list.js';
 import '../../../_snowpack/pkg/@material/mwc-list/mwc-list-item.js';
 import '../../../openscd/src/filtered-list.js';
-import { DirectDialogMixin } from '../directDialogMixin.js';
+import { WizardMixin } from '../wizard-mixin.js';
 import { getVersion } from '../../../openscd/src/foundation.js';
 import { createElement } from '../../../_snowpack/link/packages/xml/dist/index.js';
 import { newActionEvent, } from '../../../_snowpack/link/packages/core/dist/foundation/deprecated/editor.js';
@@ -105,7 +105,7 @@ export function createMissingIEDNameSubscriberInfo(doc) {
     });
     return simpleAction;
 }
-export default class SubscriberInfoPlugin extends DirectDialogMixin {
+export default class SubscriberInfoPlugin extends WizardMixin {
     async run() {
         const actions = createMissingIEDNameSubscriberInfo(this.doc);
         if (!actions.length)

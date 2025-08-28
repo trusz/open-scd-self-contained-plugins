@@ -9,9 +9,9 @@ import './ied/ied-container.js';
 import './ied/element-path.js';
 import { compareNames, getDescriptionAttribute, getNameAttribute, } from '../../../openscd/src/foundation.js';
 import { getIcon } from '../../../openscd/src/icons/icons.js';
-import { DirectDialogMixin } from '../directDialogMixin.js';
+import { WizardMixin } from '../wizard-mixin.js';
 /** An editor [[`plugin`]] for editing the `IED` section. */
-export default class IedPlugin extends DirectDialogMixin {
+class IedPlugin extends WizardMixin {
     constructor() {
         super(...arguments);
         this.editCount = -1;
@@ -176,9 +176,9 @@ export default class IedPlugin extends DirectDialogMixin {
       </section>`;
         }
         return html `<h1>
-      <span style="color: var(--base1)">${get('iededitor.missing')}</span>
-    </h1>
-    ${this.renderWizardDialog()}`;
+        <span style="color: var(--base1)">${get('iededitor.missing')}</span>
+      </h1>
+      ${this.renderWizardDialog()}`;
     }
 }
 IedPlugin.styles = css `
@@ -211,6 +211,7 @@ IedPlugin.styles = css `
       padding-right: 12px;
     }
   `;
+export default IedPlugin;
 __decorate([
     property()
 ], IedPlugin.prototype, "doc", void 0);
