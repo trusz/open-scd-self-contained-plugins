@@ -231,7 +231,7 @@ function isIedNameUnique(ied, doc) {
         return false;
     return true;
 }
-class ImportingIedPlugin extends DirectDialogMixin {
+export default class ImportingIedPlugin extends DirectDialogMixin {
     constructor() {
         super(...arguments);
         this.editCount = -1;
@@ -385,7 +385,6 @@ ImportingIedPlugin.styles = css `
       opacity: 0;
     }
   `;
-export default ImportingIedPlugin;
 __decorate([
     property({ attribute: false })
 ], ImportingIedPlugin.prototype, "doc", void 0);

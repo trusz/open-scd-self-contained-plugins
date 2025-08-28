@@ -304,7 +304,7 @@ export function getDaElementByDaiElement(daiElement) {
  * @param daElement - The DA Element for which to check.
  */
 function isEnumType(daElement) {
-    return daElement?.getAttribute('bType') === 'Enum' ?? false;
+    return daElement?.getAttribute('bType') === 'Enum';
 }
 /**
  * Check if the DA Element that's linked to the DAI Element is of the bType 'Enum'.

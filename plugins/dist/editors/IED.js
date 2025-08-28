@@ -11,7 +11,7 @@ import { compareNames, getDescriptionAttribute, getNameAttribute, } from '../../
 import { getIcon } from '../../../openscd/src/icons/icons.js';
 import { DirectDialogMixin } from '../directDialogMixin.js';
 /** An editor [[`plugin`]] for editing the `IED` section. */
-class IedPlugin extends DirectDialogMixin {
+export default class IedPlugin extends DirectDialogMixin {
     constructor() {
         super(...arguments);
         this.editCount = -1;
@@ -211,7 +211,6 @@ IedPlugin.styles = css `
       padding-right: 12px;
     }
   `;
-export default IedPlugin;
 __decorate([
     property()
 ], IedPlugin.prototype, "doc", void 0);

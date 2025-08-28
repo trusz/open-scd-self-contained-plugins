@@ -7,7 +7,7 @@ import { newWizardEvent } from '../../../openscd/src/foundation.js';
 import { wizards } from '../wizards/wizard-library.js';
 import { DirectDialogMixin } from '../directDialogMixin.js';
 /** An editor [[`plugin`]] for editing the `Substation` section. */
-class SubstationPlugin extends DirectDialogMixin {
+export default class SubstationPlugin extends DirectDialogMixin {
     constructor() {
         super(...arguments);
         this.editCount = -1;
@@ -47,7 +47,6 @@ SubstationPlugin.styles = css `
       width: 100vw;
     }
   `;
-export default SubstationPlugin;
 __decorate([
     property()
 ], SubstationPlugin.prototype, "doc", void 0);

@@ -21,7 +21,7 @@ import { getSubscribedExtRefElements } from './later-binding/foundation.js';
  */
 let FcdaBindingList = class FcdaBindingList extends LitElement {
     get hideSubscribed() {
-        return (localStorage.getItem(`fcda-binding-list-${this.includeLaterBinding ? 'later-binding' : 'data-binding'}-${this.controlTag}$hideSubscribed`) === 'true' ?? false);
+        return (localStorage.getItem(`fcda-binding-list-${this.includeLaterBinding ? 'later-binding' : 'data-binding'}-${this.controlTag}$hideSubscribed`) === 'true');
     }
     set hideSubscribed(value) {
         const oldValue = this.hideSubscribed;
@@ -29,7 +29,7 @@ let FcdaBindingList = class FcdaBindingList extends LitElement {
         this.requestUpdate('hideSubscribed', oldValue);
     }
     get hideNotSubscribed() {
-        return (localStorage.getItem(`fcda-binding-list-${this.includeLaterBinding ? 'later-binding' : 'data-binding'}-${this.controlTag}$hideNotSubscribed`) === 'true' ?? false);
+        return (localStorage.getItem(`fcda-binding-list-${this.includeLaterBinding ? 'later-binding' : 'data-binding'}-${this.controlTag}$hideNotSubscribed`) === 'true');
     }
     set hideNotSubscribed(value) {
         const oldValue = this.hideNotSubscribed;

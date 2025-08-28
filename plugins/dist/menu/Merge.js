@@ -3,7 +3,7 @@ import { css, html, query } from '../../../_snowpack/pkg/lit-element.js';
 import { newWizardEvent } from '../../../openscd/src/foundation.js';
 import { mergeWizard } from '../../../openscd/src/wizards.js';
 import { DirectDialogMixin } from '../directDialogMixin.js';
-class MergePlugin extends DirectDialogMixin {
+export default class MergePlugin extends DirectDialogMixin {
     mergeDoc(event) {
         const file = event.target?.files?.item(0) ?? false;
         if (file)
@@ -28,7 +28,6 @@ MergePlugin.styles = css `
       opacity: 0;
     }
   `;
-export default MergePlugin;
 __decorate([
     query('#merge-plugin-input')
 ], MergePlugin.prototype, "pluginFileUI", void 0);

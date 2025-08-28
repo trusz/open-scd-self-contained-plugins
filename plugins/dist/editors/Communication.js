@@ -10,7 +10,7 @@ import { newActionEvent } from '../../../_snowpack/link/packages/core/dist/found
 import { createSubNetworkWizard } from '../wizards/subnetwork.js';
 import { DirectDialogMixin } from '../directDialogMixin.js';
 /** An editor [[`plugin`]] for editing the `Communication` section. */
-class CommunicationPlugin extends DirectDialogMixin {
+export default class CommunicationPlugin extends DirectDialogMixin {
     constructor() {
         super(...arguments);
         this.editCount = -1;
@@ -98,7 +98,6 @@ CommunicationPlugin.styles = css `
       right: 32px;
     }
   `;
-export default CommunicationPlugin;
 __decorate([
     property()
 ], CommunicationPlugin.prototype, "doc", void 0);

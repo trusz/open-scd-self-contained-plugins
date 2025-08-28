@@ -10,7 +10,7 @@ import { newViewEvent, View, VIEW_EVENT_NAME, } from './protocol104/foundation/f
 import { DirectDialogMixin } from '../directDialogMixin.js';
 /** Defining view outside the class, which makes it persistent. */
 let selectedViewProtocol104Plugin = View.VALUES;
-class Communication104Plugin extends DirectDialogMixin {
+export default class Communication104Plugin extends DirectDialogMixin {
     constructor() {
         super();
         this.editCount = -1;
@@ -68,7 +68,6 @@ Communication104Plugin.styles = css `
       padding: 8px 12px 16px;
     }
   `;
-export default Communication104Plugin;
 __decorate([
     property()
 ], Communication104Plugin.prototype, "doc", void 0);

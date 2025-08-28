@@ -9,7 +9,7 @@ import { DirectDialogMixin } from '../directDialogMixin.js';
 /** Defining view outside the class, which makes it persistent. */
 let view = View.PUBLISHER;
 /** An editor [[`plugin`]] for subscribing IEDs to GOOSE messages. */
-class GooseSubscriberMessageBindingPlugin extends DirectDialogMixin {
+export default class GooseSubscriberMessageBindingPlugin extends DirectDialogMixin {
     constructor() {
         super();
         this.editCount = -1;
@@ -83,7 +83,6 @@ GooseSubscriberMessageBindingPlugin.styles = css `
       overflow-y: scroll;
     }
   `;
-export default GooseSubscriberMessageBindingPlugin;
 __decorate([
     property()
 ], GooseSubscriberMessageBindingPlugin.prototype, "doc", void 0);

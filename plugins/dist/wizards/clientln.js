@@ -107,8 +107,8 @@ function addClientLnAction(doc) {
                     const element = createElement(doc, 'ClientLN', {
                         iedName: ln?.closest('IED')?.getAttribute('name') ?? null,
                         apRef: ln?.closest('AccessPoint')?.getAttribute('name') ?? null,
-                        ldInst: ln?.closest('LDevice')?.getAttribute('inst') ?? 'LD0', //ldInst is required and with Ed2 'LD0' for client ln's
-                        prefix: ln?.getAttribute('prefix') ?? '', //OpenSCD empty string over null
+                        ldInst: ln?.closest('LDevice')?.getAttribute('inst') ?? 'LD0',
+                        prefix: ln?.getAttribute('prefix') ?? '',
                         lnClass: ln?.getAttribute('lnClass') ?? '',
                         lnInst: ln?.getAttribute('inst') ?? '', //OpenSCD empty string over null
                     });

@@ -3,7 +3,7 @@ import { css, html, query } from '../../../_snowpack/pkg/lit-element.js';
 import { newOpenDocEvent } from '../../../_snowpack/link/packages/core/dist/foundation/deprecated/open-event.js';
 import { newLogEvent } from '../../../_snowpack/link/packages/core/dist/foundation/deprecated/history.js';
 import { DirectDialogMixin } from '../directDialogMixin.js';
-class OpenProjectPlugin extends DirectDialogMixin {
+export default class OpenProjectPlugin extends DirectDialogMixin {
     async openDoc(event) {
         const file = event.target?.files?.item(0) ?? false;
         if (!file)
@@ -37,7 +37,6 @@ OpenProjectPlugin.styles = css `
       opacity: 0;
     }
   `;
-export default OpenProjectPlugin;
 __decorate([
     query('#open-plugin-input')
 ], OpenProjectPlugin.prototype, "pluginFileUI", void 0);
