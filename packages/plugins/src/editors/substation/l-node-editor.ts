@@ -14,9 +14,7 @@ import {
   newWizardEvent,
 } from '@openscd/open-scd/src/foundation.js';
 
-import {
-  cloneElement,
-} from '@openscd/xml';
+import { cloneElement } from '@openscd/xml';
 
 import { newActionEvent } from '@openscd/core/foundation/deprecated/editor.js';
 import {
@@ -86,7 +84,7 @@ export class LNodeEditor extends LitElement {
   }
   @state()
   private get missingIedReference(): boolean {
-    return this.element.getAttribute('iedName') === 'None' ?? false;
+    return this.element.getAttribute('iedName') === 'None';
   }
   @state()
   private get isIEDReference(): boolean {
